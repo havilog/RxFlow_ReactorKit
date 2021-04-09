@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/Pods-Practice_RxFlowTests/Pods-Practice_RxFlowTests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
+${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework
+${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework
+${BUILT_PRODUCTS_DIR}/RxNimble/RxNimble.framework
+${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework
