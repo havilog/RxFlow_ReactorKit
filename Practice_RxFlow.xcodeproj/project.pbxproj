@@ -3,27 +3,48 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		404A6EA4261EC718000E7703 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6EA3261EC718000E7703 /* AppDelegate.swift */; };
 		404A6EA6261EC718000E7703 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6EA5261EC718000E7703 /* SceneDelegate.swift */; };
-		404A6EA8261EC718000E7703 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6EA7261EC718000E7703 /* ViewController.swift */; };
-		404A6EAB261EC718000E7703 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404A6EA9261EC718000E7703 /* Main.storyboard */; };
+		404A6EA8261EC718000E7703 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6EA7261EC718000E7703 /* MainVC.swift */; };
 		404A6EAD261EC71A000E7703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 404A6EAC261EC71A000E7703 /* Assets.xcassets */; };
 		404A6EB0261EC71A000E7703 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404A6EAE261EC71A000E7703 /* LaunchScreen.storyboard */; };
+		404A6EBD261EC883000E7703 /* RxFlow in Frameworks */ = {isa = PBXBuildFile; productRef = 404A6EBC261EC883000E7703 /* RxFlow */; };
+		404A6F18261ED9E0000E7703 /* SampleStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F17261ED9E0000E7703 /* SampleStep.swift */; };
+		404A6F1C261EDBB5000E7703 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F1B261EDBB5000E7703 /* AppFlow.swift */; };
+		404A6F1F261EDD29000E7703 /* LogInFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F1E261EDD29000E7703 /* LogInFlow.swift */; };
+		404A6F23261EDD8B000E7703 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F22261EDD8B000E7703 /* ServiceProvider.swift */; };
+		404A6F28261EDDF0000E7703 /* userService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F27261EDDF0000E7703 /* userService.swift */; };
+		404A6F2C261EDF4B000E7703 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F2B261EDF4B000E7703 /* LoginVC.swift */; };
+		404A6F30261EDF56000E7703 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F2F261EDF56000E7703 /* LoginVM.swift */; };
+		404A6F3B261EE022000E7703 /* MainVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F3A261EE022000E7703 /* MainVM.swift */; };
+		404A6F3F261EE0A3000E7703 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F3E261EE0A3000E7703 /* ViewModelType.swift */; };
+		404A6F42261EE340000E7703 /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F41261EE340000E7703 /* HomeFlow.swift */; };
+		404A6F47261EE679000E7703 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F46261EE679000E7703 /* AppStepper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		404A6EA0261EC718000E7703 /* Practice_RxFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practice_RxFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		404A6EA3261EC718000E7703 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		404A6EA5261EC718000E7703 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		404A6EA7261EC718000E7703 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		404A6EAA261EC718000E7703 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		404A6EA7261EC718000E7703 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		404A6EAC261EC71A000E7703 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		404A6EAF261EC71A000E7703 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		404A6EB1261EC71A000E7703 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		404A6F17261ED9E0000E7703 /* SampleStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleStep.swift; sourceTree = "<group>"; };
+		404A6F1B261EDBB5000E7703 /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
+		404A6F1E261EDD29000E7703 /* LogInFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInFlow.swift; sourceTree = "<group>"; };
+		404A6F22261EDD8B000E7703 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		404A6F27261EDDF0000E7703 /* userService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userService.swift; sourceTree = "<group>"; };
+		404A6F2B261EDF4B000E7703 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		404A6F2F261EDF56000E7703 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
+		404A6F3A261EE022000E7703 /* MainVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVM.swift; sourceTree = "<group>"; };
+		404A6F3E261EE0A3000E7703 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		404A6F41261EE340000E7703 /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
+		404A6F46261EE679000E7703 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				404A6EBD261EC883000E7703 /* RxFlow in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +78,105 @@
 		404A6EA2261EC718000E7703 /* Practice_RxFlow */ = {
 			isa = PBXGroup;
 			children = (
-				404A6EA3261EC718000E7703 /* AppDelegate.swift */,
-				404A6EA5261EC718000E7703 /* SceneDelegate.swift */,
-				404A6EA7261EC718000E7703 /* ViewController.swift */,
-				404A6EA9261EC718000E7703 /* Main.storyboard */,
-				404A6EAC261EC71A000E7703 /* Assets.xcassets */,
-				404A6EAE261EC71A000E7703 /* LaunchScreen.storyboard */,
-				404A6EB1261EC71A000E7703 /* Info.plist */,
+				404A6F35261EDF89000E7703 /* Sources */,
+				404A6F34261EDF73000E7703 /* Resources */,
+				404A6F33261EDF63000E7703 /* Supporting */,
 			);
 			path = Practice_RxFlow;
+			sourceTree = "<group>";
+		};
+		404A6F16261ED96C000E7703 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				404A6F17261ED9E0000E7703 /* SampleStep.swift */,
+				404A6F1B261EDBB5000E7703 /* AppFlow.swift */,
+				404A6F1E261EDD29000E7703 /* LogInFlow.swift */,
+				404A6F41261EE340000E7703 /* HomeFlow.swift */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		404A6F21261EDD7C000E7703 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				404A6F22261EDD8B000E7703 /* ServiceProvider.swift */,
+				404A6F27261EDDF0000E7703 /* userService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		404A6F2A261EDF29000E7703 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				404A6F2B261EDF4B000E7703 /* LoginVC.swift */,
+				404A6F2F261EDF56000E7703 /* LoginVM.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		404A6F32261EDF5B000E7703 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				404A6EA7261EC718000E7703 /* MainVC.swift */,
+				404A6F3A261EE022000E7703 /* MainVM.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		404A6F33261EDF63000E7703 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				404A6EB1261EC71A000E7703 /* Info.plist */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		404A6F34261EDF73000E7703 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				404A6EAC261EC71A000E7703 /* Assets.xcassets */,
+				404A6EAE261EC71A000E7703 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		404A6F35261EDF89000E7703 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				404A6F3D261EE095000E7703 /* Common */,
+				404A6F36261EDF91000E7703 /* Application */,
+				404A6F16261ED96C000E7703 /* Flows */,
+				404A6F21261EDD7C000E7703 /* Services */,
+				404A6F38261EDFE6000E7703 /* Scenes */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		404A6F36261EDF91000E7703 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				404A6EA3261EC718000E7703 /* AppDelegate.swift */,
+				404A6EA5261EC718000E7703 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		404A6F38261EDFE6000E7703 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				404A6F46261EE679000E7703 /* AppStepper.swift */,
+				404A6F2A261EDF29000E7703 /* Login */,
+				404A6F32261EDF5B000E7703 /* Main */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		404A6F3D261EE095000E7703 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				404A6F3E261EE0A3000E7703 /* ViewModelType.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +195,9 @@
 			dependencies = (
 			);
 			name = Practice_RxFlow;
+			packageProductDependencies = (
+				404A6EBC261EC883000E7703 /* RxFlow */,
+			);
 			productName = Practice_RxFlow;
 			productReference = 404A6EA0261EC718000E7703 /* Practice_RxFlow.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +225,9 @@
 				Base,
 			);
 			mainGroup = 404A6E97261EC718000E7703;
+			packageReferences = (
+				404A6EBB261EC883000E7703 /* XCRemoteSwiftPackageReference "RxFlow" */,
+			);
 			productRefGroup = 404A6EA1261EC718000E7703 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,7 +244,6 @@
 			files = (
 				404A6EB0261EC71A000E7703 /* LaunchScreen.storyboard in Resources */,
 				404A6EAD261EC71A000E7703 /* Assets.xcassets in Resources */,
-				404A6EAB261EC718000E7703 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,23 +254,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				404A6EA8261EC718000E7703 /* ViewController.swift in Sources */,
+				404A6EA8261EC718000E7703 /* MainVC.swift in Sources */,
+				404A6F18261ED9E0000E7703 /* SampleStep.swift in Sources */,
+				404A6F23261EDD8B000E7703 /* ServiceProvider.swift in Sources */,
 				404A6EA4261EC718000E7703 /* AppDelegate.swift in Sources */,
+				404A6F30261EDF56000E7703 /* LoginVM.swift in Sources */,
+				404A6F28261EDDF0000E7703 /* userService.swift in Sources */,
+				404A6F2C261EDF4B000E7703 /* LoginVC.swift in Sources */,
+				404A6F3B261EE022000E7703 /* MainVM.swift in Sources */,
+				404A6F3F261EE0A3000E7703 /* ViewModelType.swift in Sources */,
+				404A6F1C261EDBB5000E7703 /* AppFlow.swift in Sources */,
+				404A6F42261EE340000E7703 /* HomeFlow.swift in Sources */,
+				404A6F47261EE679000E7703 /* AppStepper.swift in Sources */,
 				404A6EA6261EC718000E7703 /* SceneDelegate.swift in Sources */,
+				404A6F1F261EDD29000E7703 /* LogInFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		404A6EA9261EC718000E7703 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				404A6EAA261EC718000E7703 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		404A6EAE261EC71A000E7703 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -288,7 +408,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P25P5JJVFC;
-				INFOPLIST_FILE = Practice_RxFlow/Info.plist;
+				INFOPLIST_FILE = Practice_RxFlow/Supporting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +427,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P25P5JJVFC;
-				INFOPLIST_FILE = Practice_RxFlow/Info.plist;
+				INFOPLIST_FILE = Practice_RxFlow/Supporting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -341,6 +461,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		404A6EBB261EC883000E7703 /* XCRemoteSwiftPackageReference "RxFlow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxFlow";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		404A6EBC261EC883000E7703 /* RxFlow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 404A6EBB261EC883000E7703 /* XCRemoteSwiftPackageReference "RxFlow" */;
+			productName = RxFlow;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 404A6E98261EC718000E7703 /* Project object */;
 }
