@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,7 +24,7 @@
 		404A6F30261EDF56000E7703 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F2F261EDF56000E7703 /* LoginVM.swift */; };
 		404A6F3B261EE022000E7703 /* MainVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F3A261EE022000E7703 /* MainVM.swift */; };
 		404A6F3F261EE0A3000E7703 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F3E261EE0A3000E7703 /* ViewModelType.swift */; };
-		404A6F42261EE340000E7703 /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F41261EE340000E7703 /* HomeFlow.swift */; };
+		404A6F42261EE340000E7703 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F41261EE340000E7703 /* MainFlow.swift */; };
 		404A6F47261EE679000E7703 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F46261EE679000E7703 /* AppStepper.swift */; };
 		D72A10519F0687C74DD10B30 /* Pods_Practice_RxFlowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A6CD86BC49D7F98BEA0651 /* Pods_Practice_RxFlowTests.framework */; };
 /* End PBXBuildFile section */
@@ -60,7 +60,7 @@
 		404A6F2F261EDF56000E7703 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		404A6F3A261EE022000E7703 /* MainVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVM.swift; sourceTree = "<group>"; };
 		404A6F3E261EE0A3000E7703 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
-		404A6F41261EE340000E7703 /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
+		404A6F41261EE340000E7703 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		404A6F46261EE679000E7703 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		85A6CD86BC49D7F98BEA0651 /* Pods_Practice_RxFlowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Practice_RxFlowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		890D35009A55671EDBEAA38E /* Pods-Practice_RxFlow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice_RxFlow.release.xcconfig"; path = "Target Support Files/Pods-Practice_RxFlow/Pods-Practice_RxFlow.release.xcconfig"; sourceTree = "<group>"; };
@@ -107,7 +107,6 @@
 				C410310618929FFFA8B497EB /* Pods-Practice_RxFlowTests.debug.xcconfig */,
 				C1FDFDE5BB7B0843A8363636 /* Pods-Practice_RxFlowTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -157,7 +156,7 @@
 				404A6F1B261EDBB5000E7703 /* AppFlow.swift */,
 				404A6F46261EE679000E7703 /* AppStepper.swift */,
 				404A6F1E261EDD29000E7703 /* LogInFlow.swift */,
-				404A6F41261EE340000E7703 /* HomeFlow.swift */,
+				404A6F41261EE340000E7703 /* MainFlow.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -448,7 +447,7 @@
 				404A6F3B261EE022000E7703 /* MainVM.swift in Sources */,
 				404A6F3F261EE0A3000E7703 /* ViewModelType.swift in Sources */,
 				404A6F1C261EDBB5000E7703 /* AppFlow.swift in Sources */,
-				404A6F42261EE340000E7703 /* HomeFlow.swift in Sources */,
+				404A6F42261EE340000E7703 /* MainFlow.swift in Sources */,
 				404A6F47261EE679000E7703 /* AppStepper.swift in Sources */,
 				404A6EA6261EC718000E7703 /* SceneDelegate.swift in Sources */,
 				404A6F1F261EDD29000E7703 /* LogInFlow.swift in Sources */,

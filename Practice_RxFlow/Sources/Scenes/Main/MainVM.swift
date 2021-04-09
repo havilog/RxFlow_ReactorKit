@@ -13,9 +13,16 @@ import RxCocoa
 struct MainVM: ViewModelType, Stepper {
     var steps: PublishRelay<Step> = .init()
     
+    struct Input {}
+    struct Output {}
+    
     private let services: ServiceProviderType
     
     init(with services: ServiceProviderType) {
         self.services = services
+    }
+    
+    func transform(input: Input) -> Output {
+        return Output()
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 import RxFlow
 
-final class HomeFlow: Flow {
+final class MainFlow: Flow {
     private let services: ServiceProviderType
     
     private lazy var rootViewController: UINavigationController = {

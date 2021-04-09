@@ -59,7 +59,7 @@ final class AppFlow: Flow {
     }
     
     private func coordinateToMainVC() -> FlowContributors {
-        let homeFlow = HomeFlow(with: services)
+        let homeFlow = MainFlow(with: services)
         
         Flows.use(homeFlow, when: .created) { [unowned self] root in
             rootWindow.rootViewController = root
