@@ -47,6 +47,7 @@ final class AppFlow: Flow {
 //        }
         
         let loginFlow = LoginFlow(with: services)
+        
         Flows.use(loginFlow, when: .created) { [unowned self] root in
             rootWindow.rootViewController = root
         }

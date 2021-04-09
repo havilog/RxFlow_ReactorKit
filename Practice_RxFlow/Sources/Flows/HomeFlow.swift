@@ -43,6 +43,7 @@ final class HomeFlow: Flow {
         let vm = MainVM(with: services)
         let vc = MainVC(with: vm)
         self.rootViewController.setViewControllers([vc], animated: false)
-        return .one(flowContributor: .contribute(withNext: vc))
+        return .one(flowContributor: .contribute(withNextPresentable: vc,
+                                                 withNextStepper: vm))
     }
 }

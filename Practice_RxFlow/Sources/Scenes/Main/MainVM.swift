@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct MainVM: ViewModelType {
+import RxFlow
+import RxCocoa
+
+struct MainVM: ViewModelType, Stepper {
+    var steps: PublishRelay<Step> = .init()
+    
     private let services: ServiceProviderType
     
     init(with services: ServiceProviderType) {

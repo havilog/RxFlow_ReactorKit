@@ -11,10 +11,10 @@ import RxFlow
 import RxSwift
 import RxCocoa
 
-class MainVC: UIViewController, Stepper {
-    var steps = PublishRelay<Step>()
+class MainVC: UIViewController {
+    
+    private let viewModel: MainVM
     var disposeBag = DisposeBag()
-    private let viewModel: ViewModelType
     
     var logoutButton: UIButton = {
         let button = UIButton()
@@ -24,7 +24,7 @@ class MainVC: UIViewController, Stepper {
         return button
     }()
     
-    init(with viewModel: ViewModelType) {
+    init(with viewModel: MainVM) {
         self.viewModel = viewModel
         
         super.init(nibName: nil, bundle: nil)
@@ -40,17 +40,12 @@ class MainVC: UIViewController, Stepper {
         bind(with: viewModel)
         setUI()
     }
-    
-    func bind(with viewModel: ViewModelType) {
-        bindAction(with: viewModel)
-        bindState(with: viewModel)
-    }
 }
 
 private extension MainVC {
     func setUI() {
         self.title = "Main"
-        view.backgroundColor = .white
+        view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         
         view.addSubview(logoutButton)
         NSLayoutConstraint.activate([
@@ -63,15 +58,11 @@ private extension MainVC {
 }
 
 private extension MainVC {
-    func bindAction(with viewModel: ViewModelType) {
+    func bind(with viewModel: MainVM) {
         logoutButton.rx.tap
-            .subscribe(onNext: { [unowned self] in
-                self.steps.accept(SampleStep.loginIsRequired)
+            .subscribe(onNext: {
+                viewModel.steps.accept(SampleStep.loginIsRequired)
             })
             .disposed(by: disposeBag)
-    }
-    
-    func bindState(with viewModel: ViewModelType) {
-        
     }
 }

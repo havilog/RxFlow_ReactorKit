@@ -8,14 +8,10 @@
 import Foundation
 
 import RxFlow
-import RxSwift
 import RxRelay
 
-final class AppStepper: Stepper {
+struct AppStepper: Stepper {
     let steps: PublishRelay<Step> = .init()
-    private var disposeBag = DisposeBag()
-    
-    init() {}
     
     var initialStep: Step {
         return SampleStep.loginIsRequired

@@ -5,7 +5,6 @@
 //  Created by 한상진 on 2021/04/08.
 //
 
-import Foundation
 import UIKit
 
 import RxFlow
@@ -27,9 +26,7 @@ final class LoginFlow: Flow {
     }
     
     func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? SampleStep else {
-            return .none
-        }
+        guard let step = step as? SampleStep else { return .none }
         
         switch step {
         case .loginIsRequired:
@@ -44,6 +41,7 @@ final class LoginFlow: Flow {
         let vm = LoginVM(with: services)
         let vc = LoginVC(with: vm)
         self.rootViewController.setViewControllers([vc], animated: false)
-        return .one(flowContributor: .contribute(withNext: vc))
+        return .one(flowContributor: .contribute(withNextPresentable: vc,
+                                                 withNextStepper: vm))
     }
 }

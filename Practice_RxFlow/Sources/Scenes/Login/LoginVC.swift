@@ -11,10 +11,10 @@ import RxFlow
 import RxSwift
 import RxCocoa
 
-class LoginVC: UIViewController, Stepper {
-    var steps = PublishRelay<Step>()
+class LoginVC: UIViewController {
+    
+    private let viewModel: LoginVM
     var disposeBag = DisposeBag()
-    private let viewModel: ViewModelType
     
     var loginButton: UIButton = {
         let button = UIButton()
@@ -24,7 +24,7 @@ class LoginVC: UIViewController, Stepper {
         return button
     }()
     
-    init(with viewModel: ViewModelType) {
+    init(with viewModel: LoginVM) {
         self.viewModel = viewModel
         
         super.init(nibName: nil, bundle: nil)
@@ -41,7 +41,12 @@ class LoginVC: UIViewController, Stepper {
         setUI()
     }
     
-    func bind(with viewModel: ViewModelType) {
+    func bind(with viewModel: LoginVM) {
+        loginButton.rx.tap.subscribe(onNext: {
+            viewModel.steps.accept(SampleStep.dashboardIsRequired)
+        })
+        .disposed(by: disposeBag)
+        
         bindAction(with: viewModel)
         bindState(with: viewModel)
     }
@@ -50,7 +55,7 @@ class LoginVC: UIViewController, Stepper {
 private extension LoginVC {
     func setUI() {
         self.title = "Login"
-        view.backgroundColor = .white
+        view.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         
         view.addSubview(loginButton)
         NSLayoutConstraint.activate([
@@ -63,15 +68,19 @@ private extension LoginVC {
 }
 
 private extension LoginVC {
-    func bindAction(with viewModel: ViewModelType) {
-        loginButton.rx.tap
-            .subscribe(onNext: { [unowned self] in
-                self.steps.accept(SampleStep.dashboardIsRequired)
-            })
+    func bindAction(with viewModel: LoginVM) {
+        let loginTapped = loginButton.rx.tap.map { _ in }
+        let input = LoginVM.Input(buttonTapped: loginTapped)
+        
+        let output = viewModel.transform(input: input)
+        
+        output.changeText
+            .drive(loginButton.rx.title(for: .normal))
             .disposed(by: disposeBag)
+
     }
     
-    func bindState(with viewModel: ViewModelType) {
+    func bindState(with viewModel: LoginVM) {
         
     }
 }
