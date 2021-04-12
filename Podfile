@@ -10,6 +10,7 @@ target 'Practice_RxFlow' do
   pod 'RxFlow'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'ReactorKit'
 
   target 'Practice_RxFlowTests' do
     inherit! :search_paths

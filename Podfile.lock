@@ -1,5 +1,8 @@
 PODS:
   - Nimble (9.0.0)
+  - ReactorKit (3.0.0):
+    - RxSwift (~> 6.0)
+    - WeakMapTable (~> 1.1)
   - RxBlocking (6.1.0):
     - RxSwift (= 6.1.0)
   - RxCocoa (6.1.0):
@@ -22,8 +25,10 @@ PODS:
   - RxSwift (6.1.0)
   - RxTest (6.1.0):
     - RxSwift (= 6.1.0)
+  - WeakMapTable (1.2.0)
 
 DEPENDENCIES:
+  - ReactorKit
   - RxCocoa
   - RxFlow
   - RxNimble/RxBlocking
@@ -33,6 +38,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Nimble
+    - ReactorKit
     - RxBlocking
     - RxCocoa
     - RxFlow
@@ -40,9 +46,11 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - RxTest
+    - WeakMapTable
 
 SPEC CHECKSUMS:
   Nimble: 3b4ec3fd40f1dc178058e0981107721c615643d8
+  ReactorKit: 5348c9881dcb546605b451e32759dccc9937d36e
   RxBlocking: 602095fba0bce7b16b56ccec89edf780c248b7d9
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxFlow: b407eb6b5d956041a9e0930469346e104911a470
@@ -50,7 +58,8 @@ SPEC CHECKSUMS:
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
   RxTest: 9d26616eaff4a7e75f4ecae9b2c24840f2e8218d
+  WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: c47790f1da49111fd2e3f4acb5069eef1e7c2363
+PODFILE CHECKSUM: de6d6fe1d3c2bfef0c292f87eaa224d0d50a0380
 
 COCOAPODS: 1.10.1

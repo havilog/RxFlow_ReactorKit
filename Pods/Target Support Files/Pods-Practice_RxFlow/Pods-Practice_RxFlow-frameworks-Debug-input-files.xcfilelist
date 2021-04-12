@@ -1,5 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-Practice_RxFlow/Pods-Practice_RxFlow-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ReactorKit/ReactorKit.framework
 ${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework
 ${BUILT_PRODUCTS_DIR}/RxFlow/RxFlow.framework
 ${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework
 ${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
+${BUILT_PRODUCTS_DIR}/WeakMapTable/WeakMapTable.framework
