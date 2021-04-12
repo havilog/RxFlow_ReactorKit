@@ -25,7 +25,7 @@ struct AppStepper: Stepper {
     }
     
     func readyToEmitSteps() {
-        provider.loginService.didLoginObservable()
+        provider.loginService.didLoginObservable
             .map { $0 ? SampleStep.loginIsCompleted : SampleStep.loginIsRequired }
             .bind(to: steps)
             .disposed(by: disposeBag)

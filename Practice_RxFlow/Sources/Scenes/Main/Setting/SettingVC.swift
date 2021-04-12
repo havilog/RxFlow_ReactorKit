@@ -85,6 +85,7 @@ extension SettingVC: View {
 
 private extension SettingVC {
     private func setUI() {
+        self.title = "Setting"
         view.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         
         setNav()

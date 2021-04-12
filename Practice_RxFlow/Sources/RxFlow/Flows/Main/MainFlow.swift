@@ -22,6 +22,10 @@ final class MainFlow: Flow {
         self.provider = services
     }
     
+    deinit {
+        print("\(type(of: self)): \(#function)")
+    }
+    
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step.asSampleStep else { return .none }
         
@@ -50,7 +54,9 @@ final class MainFlow: Flow {
         Flows.use(
             homeFlow, middleFlow, settingFlow, 
             when: .created
-        ) { [unowned self] (root1: UINavigationController, root2: UINavigationController, root3: UINavigationController) in
+        ) { [unowned self] (root1: UINavigationController, 
+                            root2: UINavigationController, 
+                            root3: UINavigationController) in
             
             let homeImage: UIImage? = UIImage(named: "home")
             let middleImage: UIImage? = UIImage(named: "middle")

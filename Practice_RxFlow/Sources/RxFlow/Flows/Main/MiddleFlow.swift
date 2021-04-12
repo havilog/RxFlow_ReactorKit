@@ -58,7 +58,7 @@ private extension MiddleFlow {
     func coordinateToMiddle() -> FlowContributors {
         let vm = MiddleReactor(provider: provider)
         let vc = MiddleVC(with: vm)
-        self.rootViewController.setViewControllers([vc], animated: false)
+        self.rootViewController.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNext: vc))
     }
 }

@@ -70,6 +70,7 @@ extension MiddleVC: View {
 
 private extension MiddleVC {
     private func setUI() {
+        self.title = "Middle"
         view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         
         setNav()

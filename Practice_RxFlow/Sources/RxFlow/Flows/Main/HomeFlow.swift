@@ -59,16 +59,13 @@ private extension HomeFlow {
     func coordinateToHome() -> FlowContributors {
         let vm = HomeReactor(with: provider)
         let vc = HomeVC(with: vm)
-        self.rootViewController.setViewControllers([vc], animated: false)
+        self.rootViewController.pushViewController(vc, animated: true)
         return .one(flowContributor: .contribute(withNext: vc))
     }
     
     func coordinateToHomeDetail(with ID: String) -> FlowContributors {
-        // TODO: Fix
-        let vm = HomeReactor(with: provider)
-        let vc = HomeVC(with: vm)
-        self.rootViewController.setViewControllers([vc], animated: false)
-        return .one(flowContributor: .contribute(withNextPresentable: vc,
-                                                 withNextStepper: vm))
+        let vc = HomeDetailVC(with: ID)
+        self.rootViewController.pushViewController(vc, animated: true)
+        return .one(flowContributor: .contribute(withNext: vc))
     }
 }

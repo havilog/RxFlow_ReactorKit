@@ -6,12 +6,12 @@
 //
 
 protocol ServiceProviderType: class {
-    var userService: UserServiceType { get set }
-    var loginService: LoginServiceType { get set }
+    var networkService: NetworkManagerType { get }
+    var loginService: LoginServiceType { get }
     
 }
 
 final class ServiceProvider: ServiceProviderType {
-    lazy var userService: UserServiceType = UserService(provider: self)
+    lazy var networkService: NetworkManagerType = NetworkManager()
     lazy var loginService: LoginServiceType = LoginService(provider: self)
 }

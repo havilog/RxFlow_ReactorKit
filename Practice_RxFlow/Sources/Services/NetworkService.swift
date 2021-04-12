@@ -5,8 +5,8 @@
 //  Created by 한상진 on 2021/04/08.
 //
 
-protocol UserServiceType: class {
+protocol NetworkServiceType: class {
     
 }
 
-final class UserService: BaseService, UserServiceType {}
+final class NetworkService: BaseService, NetworkServiceType {}

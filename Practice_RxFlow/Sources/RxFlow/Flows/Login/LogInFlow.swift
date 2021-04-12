@@ -22,6 +22,10 @@ final class LoginFlow: Flow {
         self.provider = services
     }
     
+    deinit {
+        print("\(type(of: self)): \(#function)")
+    }
+    
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step.asSampleStep else { return .none }
         

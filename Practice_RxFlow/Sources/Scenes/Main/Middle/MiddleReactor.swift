@@ -50,7 +50,7 @@ extension MiddleReactor {
 
 // MARK: Reduce
 extension MiddleReactor {
-    func reduce(state: State, mutation: Mutation) -> State {
+//    func reduce(state: State, mutation: Mutation) -> State {
 //        var newState = state
         
         //        switch mutation {
@@ -58,7 +58,7 @@ extension MiddleReactor {
         //        }
         
 //        return newState
-    }
+//    }
 }
 
 // MARK: Method

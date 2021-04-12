@@ -15,8 +15,8 @@ enum UserLogin {
 protocol LoginServiceType: class {
     func setUserLogin()
     func setUserLogout()
-    func didLoginObservable() -> Observable<Bool>
-    
+
+    var didLoginObservable: Observable<Bool> { get }
     var didLogin: Bool { get }
 }
 
@@ -25,6 +25,10 @@ final class LoginService: BaseService, LoginServiceType {
     
     var didLogin: Bool {
         return defaults.bool(forKey: UserLogin.didLogin)
+    }
+    
+    var didLoginObservable: Observable<Bool> {
+        return .just(didLogin)
     }
     
     func setUserLogin() {
@@ -37,10 +41,6 @@ final class LoginService: BaseService, LoginServiceType {
         print("setUserLogout")
         
         defaults.removeObject(forKey: UserLogin.didLogin)
-    }
-    
-    func didLoginObservable() -> Observable<Bool> {
-        return .just(didLogin)
     }
 }
 
