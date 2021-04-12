@@ -16,9 +16,9 @@ struct AppStepper: Stepper {
     private let provider: ServiceProviderType
     private let disposeBag: DisposeBag = .init()
     
-    var initialStep: Step {
-        return SampleStep.loginIsRequired
-    }
+//    var initialStep: Step {
+//        return SampleStep.loginIsRequired
+//    }
     
     init(provider: ServiceProviderType) {
         self.provider = provider

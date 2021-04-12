@@ -32,6 +32,10 @@ final class HomeVC: UIViewController, Stepper {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print("\(type(of: self)): \(#function)")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
