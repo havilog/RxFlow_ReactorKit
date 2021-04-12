@@ -6,10 +6,20 @@ target 'Practice_RxFlow' do
   use_frameworks!
 
   # Pods for Practice_RxFlow
+  
+  # Utils
+  
+  pod 'SnapKit'
+  pod 'Then'
 
-  pod 'RxFlow'
+  # Rx
+  
   pod 'RxSwift'
   pod 'RxCocoa'
+  
+  # Rx Framework
+  
+  pod 'RxFlow'
   pod 'ReactorKit'
 
   target 'Practice_RxFlowTests' do
