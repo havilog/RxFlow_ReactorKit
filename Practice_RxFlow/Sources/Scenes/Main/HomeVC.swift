@@ -11,7 +11,9 @@ import RxFlow
 import RxCocoa
 import ReactorKit
 
-final class HomeVC: UIViewController {
+final class HomeVC: UIViewController, Stepper {
+    var steps: PublishRelay<Step> = .init()
+    
     var disposeBag: DisposeBag = .init()
     
     init(with reactor: HomeReactor) {

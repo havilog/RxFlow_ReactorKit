@@ -38,7 +38,7 @@ final class MiddleFlow: Flow {
     // MARK: Navigate
     
     func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? SampleStep else { return .none }
+        guard let step = step.asSampleStep else { return .none }
         
         switch step {
         case .middleIsRequired:
@@ -59,7 +59,6 @@ private extension MiddleFlow {
         let vm = MiddleReactor(provider: provider)
         let vc = MiddleVC(with: vm)
         self.rootViewController.setViewControllers([vc], animated: false)
-        return .one(flowContributor: .contribute(withNextPresentable: vc,
-                                                 withNextStepper: vm))
+        return .one(flowContributor: .contribute(withNext: vc))
     }
 }

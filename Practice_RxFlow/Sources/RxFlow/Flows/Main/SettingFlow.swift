@@ -38,11 +38,14 @@ final class SettingFlow: Flow {
     // MARK: Navigate
     
     func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? SampleStep else { return .none }
+        guard let step = step.asSampleStep else { return .none }
         
         switch step {
         case .settingIsRequired:
             return coordinateToSetting()
+        
+        case .loginIsRequired:
+            return .end(forwardToParentFlowWithStep: SampleStep.loginIsRequired)
         
         default:
             return .none
@@ -56,10 +59,18 @@ private extension SettingFlow {
     
     // TODO: Fix
     func coordinateToSetting() -> FlowContributors {
-        let vm = SettingReactor(provider: provider)
-        let vc = SettingVC(with: vm)
-        self.rootViewController.setViewControllers([vc], animated: false)
-        return .one(flowContributor: .contribute(withNextPresentable: vc,
-                                                 withNextStepper: vm))
+        let reactor = SettingReactor(provider: provider)
+        let vc = SettingVC(with: reactor)
+        self.rootViewController.setViewControllers([vc], animated: true)
+        return .one(flowContributor: .contribute(withNext: vc))
+    }
+    
+    // TODO: 이렇게 하면 안됨
+    func coordinateToLogin() -> FlowContributors {
+        let reactor = LoginReactor(provider: provider)
+        let vc = LoginVC(with: reactor)
+        self.rootViewController.setViewControllers([vc], animated: true)
+        
+        return .one(flowContributor: .contribute(withNext: vc))
     }
 }

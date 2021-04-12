@@ -8,11 +8,13 @@
 import UIKit
 
 import RxFlow
+import RxSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var coordinator: FlowCoordinator = .init()
+    var disposeBag: DisposeBag = .init()
 
     func scene(
         _ scene: UIScene,
@@ -21,13 +23,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        // didNavigate
+        coordinator.rx.willNavigate
+            .subscribe(onNext: { flow, step in
+                let currentFlow = "\(flow)".split(separator: ".").last ?? "no flow"
+                print("➡️ will navigate to flow= \(currentFlow) and step= \(step)")
+            })
+            .disposed(by: disposeBag)
+        
         let window = UIWindow(windowScene: windowScene) 
         self.window = window
         
         let provider: ServiceProviderType = ServiceProvider()
         let appFlow = AppFlow(with: window, and: provider)
+        let appStepper = AppStepper(provider: provider)
         
-        coordinator.coordinate(flow: appFlow, with: AppStepper())
+        coordinator.coordinate(flow: appFlow, with: appStepper)
+        
         window.makeKeyAndVisible()
     }
 

@@ -7,10 +7,13 @@
 
 import UIKit
 
+import RxFlow
 import RxCocoa
 import ReactorKit
 
-final class MiddleVC: UIViewController {
+final class MiddleVC: UIViewController, Stepper {
+    
+    var steps: PublishRelay<Step> = .init()
     
     // MARK: Constants
     

@@ -10,7 +10,7 @@ import RxFlow
 enum SampleStep: Step {
     // Login
     case loginIsRequired
-    case userIsLoggedIn
+    case loginIsCompleted
     
     // Main
     case mainTabBarIsRequired

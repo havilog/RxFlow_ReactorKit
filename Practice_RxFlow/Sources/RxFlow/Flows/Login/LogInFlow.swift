@@ -10,15 +10,12 @@ import UIKit
 import RxFlow
 
 final class LoginFlow: Flow {
-    private lazy var rootViewController: UINavigationController = {
-        let viewController = UINavigationController()
-        return viewController
-    }()
-    
+
     var root: Presentable {
         return self.rootViewController
     }
     
+    private let rootViewController: UINavigationController = .init()
     private let provider: ServiceProviderType
     
     init(with services: ServiceProviderType) {
@@ -26,13 +23,14 @@ final class LoginFlow: Flow {
     }
     
     func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? SampleStep else { return .none }
+        guard let step = step.asSampleStep else { return .none }
         
         switch step {
         case .loginIsRequired:
             return coordinateToLogin()
             
-        case .mainTabBarIsRequired, .userIsLoggedIn:
+        /// Login Flow를 dissmiss 시키고 AppFlow로 이동해 mainTabBarIsRequired Step을 호출한다.
+        case .loginIsCompleted:
             return .end(forwardToParentFlowWithStep: SampleStep.mainTabBarIsRequired)
             
         default:
@@ -41,10 +39,9 @@ final class LoginFlow: Flow {
     }
     
     private func coordinateToLogin() -> FlowContributors {
-        let vm = LoginReactor(with: provider)
-        let vc = LoginVC(with: vm)
-        self.rootViewController.setViewControllers([vc], animated: false)
-        return .one(flowContributor: .contribute(withNextPresentable: vc,
-                                                 withNextStepper: vm))
+        let reactor = LoginReactor(provider: provider)
+        let vc = LoginVC(with: reactor)
+        self.rootViewController.pushViewController(vc, animated: true)
+        return .one(flowContributor: .contribute(withNext: vc))
     }
 }

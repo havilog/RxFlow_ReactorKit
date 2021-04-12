@@ -12,31 +12,42 @@ import RxFlow
 
 // Flow는 AnyObject를 준수하므로 class로 선언해주어야 한다.
 final class AppFlow: Flow {
+    var root: Presentable {
+        return self.rootWindow
+    }
+    
     private let rootWindow: UIWindow
-    private let services: ServiceProviderType
+    private let provider: ServiceProviderType
     
     init(
         with window: UIWindow,
         and services: ServiceProviderType
     ) {
         self.rootWindow = window
-        self.services = services
+        self.provider = services
     }
     
-    var root: Presentable {
-        return self.rootWindow
+    deinit {
+        print("\(type(of: self)): \(#function)")
     }
     
+    /// 1. 바로 메인으로 이동
+    /// 2. 로그인 필요
+    /// 3. 로그인 완료
     func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? SampleStep else {
-            return FlowContributors.none
-        }
+        guard let step = step.asSampleStep else { return .none }
         
         switch step {
+        /// 앱을 처음 시작해 로그인이 되어있지 않을 경우 로그인 화면으로 이동
         case .loginIsRequired:
             return coordinateToLoginVC()
             
-        case .userIsLoggedIn, .mainTabBarIsRequired:
+        /// 아직 어떤 상황에서 필요한지 이해 x
+//        case .loginIsCompleted:
+//            return dismissLogin()
+            
+        /// mainTabBarIsRequired 호출 시 MainFlow와 nextStep을 넘겨준다.
+        case .mainTabBarIsRequired, .loginIsCompleted:
             return coordinateToMainVC()
             
         default:
@@ -49,9 +60,9 @@ final class AppFlow: Flow {
 //            rootVC.dismiss(animated: false)
 //        }
         
-        let loginFlow = LoginFlow(with: services)
+        let loginFlow = LoginFlow(with: provider)
         
-        Flows.use(loginFlow, when: .created) { [unowned self] root in
+        Flows.use(loginFlow, when: .ready) { [unowned self] root in
             rootWindow.rootViewController = root
         }
         
@@ -62,16 +73,25 @@ final class AppFlow: Flow {
     }
     
     private func coordinateToMainVC() -> FlowContributors {
-        let homeFlow = MainFlow(with: services)
+        let mainFlow = MainFlow(with: provider)
         
-        Flows.use(homeFlow, when: .created) { [unowned self] root in
+        Flows.use(mainFlow, when: .ready) { [unowned self] root in
             rootWindow.rootViewController = root
         }
         
         let nextStep = OneStepper(withSingleStep: SampleStep.mainTabBarIsRequired)
         
-        return .one(flowContributor: .contribute(withNextPresentable: homeFlow,
+        return .one(flowContributor: .contribute(withNextPresentable: mainFlow,
                                                  withNextStepper: nextStep))
+    }
+    
+    private func dismissLogin() -> FlowContributors {
+        print("dismissLogin called")
+//        if let loginVC = rootWindow.rootViewController {
+//            loginVC.dismiss(animated: true)
+//        }
+        
+        return .none
     }
     
 }

@@ -18,15 +18,15 @@ final class SettingReactor: Reactor, Stepper {
     // MARK: Events
     
     enum Action {
-        
+        case logoutButtonDidTap
     }
     
     enum Mutation {
-        
+        case coordinateToLogin
     }
     
     struct State {
-        
+        var step: Step? = nil
     }
     
     // MARK: Properties
@@ -45,24 +45,27 @@ final class SettingReactor: Reactor, Stepper {
 // MARK: Mutation
 
 extension SettingReactor {
-    //    func mutate(action: Action) -> Observable<Mutation> {
-    //        switch action {
-    //        case :
-    //        }
-    //    }
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .logoutButtonDidTap:
+            provider.loginService.setUserLogout()
+            return .just(.coordinateToLogin)
+        }
+    }
 }
 
 // MARK: Reduce
 
 extension SettingReactor {
     func reduce(state: State, mutation: Mutation) -> State {
-        //        var newState = state
+        var newState = initialState
         
-        //        switch mutation {
-        //        case :
-        //        }
+        switch mutation {
+        case .coordinateToLogin:
+            newState.step = SampleStep.loginIsRequired
+        }
         
-        //        return newState
+        return newState
     }
 }
 

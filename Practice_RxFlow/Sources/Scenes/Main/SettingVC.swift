@@ -7,10 +7,13 @@
 
 import UIKit
 
+import RxFlow
 import RxCocoa
 import ReactorKit
 
-final class SettingVC: UIViewController {
+final class SettingVC: UIViewController, Stepper {
+    
+    var steps: PublishRelay<Step> = .init()
     
     // MARK: Constants
     
@@ -20,13 +23,10 @@ final class SettingVC: UIViewController {
     
     // MARK: UI Properties
     
-    private let logoutButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("logout", for: .normal)
-        button.backgroundColor = .black
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private let logoutButton: UIButton = UIButton().then {
+        $0.setTitle("logout", for: .normal)
+        $0.backgroundColor = .black
+    }
     
     // MARK: Initializers
     
@@ -59,19 +59,25 @@ extension SettingVC: View {
     }
     
     private func bindView(_ reactor: SettingReactor) {
-        logoutButton.rx.tap
-            .subscribe(onNext: {
-                reactor.steps.accept(SampleStep.loginIsRequired)
-            })
-            .disposed(by: disposeBag)
+//        logoutButton.rx.tap
+//            .subscribe(onNext: {
+//                reactor.steps.accept(SampleStep.loginIsRequired)
+//            })
+//            .disposed(by: disposeBag)
     }
     
     private func bindAction(_ reactor: SettingReactor) {
-        
+        logoutButton.rx.tap
+            .map { Reactor.Action.logoutButtonDidTap }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     
     private func bindState(_ reactor: SettingReactor) {
-        
+        reactor.state
+            .compactMap { $0.step }
+            .bind(to: steps)
+            .disposed(by: disposeBag)
     }
 }
 
@@ -84,12 +90,10 @@ private extension SettingVC {
         setNav()
         
         view.addSubview(logoutButton)
-        NSLayoutConstraint.activate([
-            logoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
-            logoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            logoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            logoutButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        logoutButton.snp.makeConstraints { 
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(50)
+            $0.height.equalTo(50)
+        }
     }
     
     private func setNav() {

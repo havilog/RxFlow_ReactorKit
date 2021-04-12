@@ -11,16 +11,18 @@ import RxFlow
 import RxCocoa
 import ReactorKit
 
-final class LoginVC: UIViewController {
+final class LoginVC: UIViewController, Stepper {
+    
+    // MARK: Stepper
+    
+    var steps: PublishRelay<Step> = .init()
+    
     var disposeBag: DisposeBag = .init()
     
-    private let loginButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("login", for: .normal)
-        button.backgroundColor = .black
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private let loginButton: UIButton = UIButton().then {
+        $0.setTitle("login", for: .normal)
+        $0.backgroundColor = .black
+    }
     
     init(with reactor: LoginReactor) {
         super.init(nibName: nil, bundle: nil)
@@ -45,12 +47,10 @@ private extension LoginVC {
         view.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         
         view.addSubview(loginButton)
-        NSLayoutConstraint.activate([
-            loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            loginButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        loginButton.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(50)
+            $0.height.equalTo(50)
+        }
     }
 }
 
@@ -62,18 +62,24 @@ extension LoginVC: View {
     }
     
     private func bindView(_ reactor: LoginReactor) {
-        loginButton.rx.tap
-            .subscribe(onNext: {
-                reactor.steps.accept(SampleStep.mainTabBarIsRequired)
-            })
-            .disposed(by: disposeBag)
+//        loginButton.rx.tap
+//            .subscribe(onNext: {
+//                reactor.steps.accept(SampleStep.mainTabBarIsRequired)
+//            })
+//            .disposed(by: disposeBag)
     }
     
     private func bindAction(_ reactor: LoginReactor) {
-        
+        loginButton.rx.tap
+            .map { Reactor.Action.loginButtonDidTap }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     
     private func bindState(_ reactor: LoginReactor) {
-        
+        reactor.state
+            .map { $0.step }
+            .bind(to: steps)
+            .disposed(by: disposeBag)
     }
 }

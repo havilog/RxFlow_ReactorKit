@@ -23,15 +23,13 @@ final class MainFlow: Flow {
     }
     
     func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? SampleStep else {
-            return .none
-        }
+        guard let step = step.asSampleStep else { return .none }
         
         switch step {
         case .loginIsRequired:
             return .end(forwardToParentFlowWithStep: SampleStep.loginIsRequired)
             
-        case .mainTabBarIsRequired, .userIsLoggedIn:
+        case .mainTabBarIsRequired:
             return coordinateToMainTabBar()
         
         default:

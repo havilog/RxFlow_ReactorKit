@@ -38,6 +38,7 @@
 		40649A1E2623E1EF0020AE0F /* SettingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40649A1D2623E1EF0020AE0F /* SettingReactor.swift */; };
 		40649A222623E7250020AE0F /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40649A212623E7250020AE0F /* LoginService.swift */; };
 		40649A262623E7D90020AE0F /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40649A252623E7D90020AE0F /* BaseService.swift */; };
+		40649ACE262401DE0020AE0F /* Step+asSampleStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40649ACD262401DE0020AE0F /* Step+asSampleStep.swift */; };
 		D72A10519F0687C74DD10B30 /* Pods_Practice_RxFlowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A6CD86BC49D7F98BEA0651 /* Pods_Practice_RxFlowTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		40649A1D2623E1EF0020AE0F /* SettingReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingReactor.swift; sourceTree = "<group>"; };
 		40649A212623E7250020AE0F /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		40649A252623E7D90020AE0F /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		40649ACD262401DE0020AE0F /* Step+asSampleStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Step+asSampleStep.swift"; sourceTree = "<group>"; };
 		85A6CD86BC49D7F98BEA0651 /* Pods_Practice_RxFlowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Practice_RxFlowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		890D35009A55671EDBEAA38E /* Pods-Practice_RxFlow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice_RxFlow.release.xcconfig"; path = "Target Support Files/Pods-Practice_RxFlow/Pods-Practice_RxFlow.release.xcconfig"; sourceTree = "<group>"; };
 		8A62E9418AA0467B63114C87 /* Pods_Practice_RxFlow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Practice_RxFlow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -316,8 +318,17 @@
 			children = (
 				404A6F3E261EE0A3000E7703 /* ViewModelType.swift */,
 				40394B11262002FC0059DFB4 /* ActivityIndicator.swift */,
+				40649ACC262401CF0020AE0F /* Extension */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		40649ACC262401CF0020AE0F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				40649ACD262401DE0020AE0F /* Step+asSampleStep.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		406EEAD02620448D00958FCA /* Login */ = {
@@ -531,6 +542,7 @@
 				40649A1E2623E1EF0020AE0F /* SettingReactor.swift in Sources */,
 				404A6F30261EDF56000E7703 /* LoginReactor.swift in Sources */,
 				400695662620438C001AB8D1 /* HomeFlow.swift in Sources */,
+				40649ACE262401DE0020AE0F /* Step+asSampleStep.swift in Sources */,
 				404A6F28261EDDF0000E7703 /* userService.swift in Sources */,
 				404A6F2C261EDF4B000E7703 /* LoginVC.swift in Sources */,
 				404A6F3B261EE022000E7703 /* HomeReactor.swift in Sources */,
