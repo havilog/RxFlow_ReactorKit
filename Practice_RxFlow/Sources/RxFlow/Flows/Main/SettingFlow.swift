@@ -19,7 +19,7 @@ final class SettingFlow: Flow {
     
     private let rootViewController = UINavigationController()
     private let stepper: SettingStepper
-    private let services: ServiceProviderType
+    private let provider: ServiceProviderType
     
     // MARK: Init
     
@@ -27,7 +27,7 @@ final class SettingFlow: Flow {
         with services: ServiceProviderType,
         stepper: SettingStepper
     ) {
-        self.services = services
+        self.provider = services
         self.stepper = stepper
     }
     
@@ -56,8 +56,8 @@ private extension SettingFlow {
     
     // TODO: Fix
     func coordinateToSetting() -> FlowContributors {
-        let vm = MainVM(with: services)
-        let vc = MainVC(with: vm)
+        let vm = SettingReactor(provider: provider)
+        let vc = SettingVC(with: vm)
         self.rootViewController.setViewControllers([vc], animated: false)
         return .one(flowContributor: .contribute(withNextPresentable: vc,
                                                  withNextStepper: vm))

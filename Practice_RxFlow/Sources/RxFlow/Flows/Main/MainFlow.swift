@@ -15,11 +15,11 @@ final class MainFlow: Flow {
         return self.rootViewController
     }
     
-    private let services: ServiceProviderType
+    private let provider: ServiceProviderType
     let rootViewController: UITabBarController = .init()
     
     init(with services: ServiceProviderType) {
-        self.services = services
+        self.provider = services
     }
     
     func navigate(to step: Step) -> FlowContributors {
@@ -45,9 +45,9 @@ final class MainFlow: Flow {
         let middleStepper: MiddleStepper = .init()
         let settingStepper: SettingStepper = .init()
         
-        let homeFlow: HomeFlow = .init(with: self.services, stepper: homeStepper)
-        let middleFlow: MiddleFlow = .init(with: self.services, stepper: middleStepper)
-        let settingFlow: SettingFlow = .init(with: self.services, stepper: settingStepper)
+        let homeFlow: HomeFlow = .init(with: self.provider, stepper: homeStepper)
+        let middleFlow: MiddleFlow = .init(with: self.provider, stepper: middleStepper)
+        let settingFlow: SettingFlow = .init(with: self.provider, stepper: settingStepper)
         
         Flows.use(
             homeFlow, middleFlow, settingFlow, 

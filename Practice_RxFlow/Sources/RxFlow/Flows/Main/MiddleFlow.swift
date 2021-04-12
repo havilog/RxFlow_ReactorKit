@@ -19,7 +19,7 @@ final class MiddleFlow: Flow {
     
     private let rootViewController = UINavigationController()
     private let stepper: MiddleStepper
-    private let services: ServiceProviderType
+    private let provider: ServiceProviderType
     
     // MARK: Init
     
@@ -27,7 +27,7 @@ final class MiddleFlow: Flow {
         with services: ServiceProviderType,
         stepper: MiddleStepper
     ) {
-        self.services = services
+        self.provider = services
         self.stepper = stepper
     }
     
@@ -56,8 +56,8 @@ private extension MiddleFlow {
     
     // TODO: Fix
     func coordinateToMiddle() -> FlowContributors {
-        let vm = MainVM(with: services)
-        let vc = MainVC(with: vm)
+        let vm = MiddleReactor(provider: provider)
+        let vc = MiddleVC(with: vm)
         self.rootViewController.setViewControllers([vc], animated: false)
         return .one(flowContributor: .contribute(withNextPresentable: vc,
                                                  withNextStepper: vm))

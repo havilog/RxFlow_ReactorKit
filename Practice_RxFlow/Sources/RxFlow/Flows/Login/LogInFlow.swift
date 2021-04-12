@@ -19,10 +19,10 @@ final class LoginFlow: Flow {
         return self.rootViewController
     }
     
-    private let services: ServiceProviderType
+    private let provider: ServiceProviderType
     
     init(with services: ServiceProviderType) {
-        self.services = services
+        self.provider = services
     }
     
     func navigate(to step: Step) -> FlowContributors {
@@ -41,7 +41,7 @@ final class LoginFlow: Flow {
     }
     
     private func coordinateToLogin() -> FlowContributors {
-        let vm = LoginVM(with: services)
+        let vm = LoginReactor(with: provider)
         let vc = LoginVC(with: vm)
         self.rootViewController.setViewControllers([vc], animated: false)
         return .one(flowContributor: .contribute(withNextPresentable: vc,

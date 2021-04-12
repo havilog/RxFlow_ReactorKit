@@ -8,15 +8,13 @@
 import UIKit
 
 import RxFlow
-import RxSwift
 import RxCocoa
+import ReactorKit
 
-class LoginVC: UIViewController {
+final class LoginVC: UIViewController {
+    var disposeBag: DisposeBag = .init()
     
-    private let viewModel: LoginVM
-    var disposeBag = DisposeBag()
-    
-    var loginButton: UIButton = {
+    private let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("login", for: .normal)
         button.backgroundColor = .black
@@ -24,10 +22,10 @@ class LoginVC: UIViewController {
         return button
     }()
     
-    init(with viewModel: LoginVM) {
-        self.viewModel = viewModel
-        
+    init(with reactor: LoginReactor) {
         super.init(nibName: nil, bundle: nil)
+        
+        self.reactor = reactor
     }
     
     required init?(coder: NSCoder) {
@@ -37,18 +35,7 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bind(with: viewModel)
         setUI()
-    }
-    
-    func bind(with viewModel: LoginVM) {
-        loginButton.rx.tap.subscribe(onNext: {
-            viewModel.steps.accept(SampleStep.mainTabBarIsRequired)
-        })
-        .disposed(by: disposeBag)
-        
-        bindAction(with: viewModel)
-        bindState(with: viewModel)
     }
 }
 
@@ -67,20 +54,26 @@ private extension LoginVC {
     }
 }
 
-private extension LoginVC {
-    func bindAction(with viewModel: LoginVM) {
-        let loginTapped = loginButton.rx.tap.map { _ in }
-        let input = LoginVM.Input(buttonTapped: loginTapped)
-        
-        let output = viewModel.transform(input: input)
-        
-        output.changeText
-            .drive(loginButton.rx.title(for: .normal))
-            .disposed(by: disposeBag)
-
+extension LoginVC: View {
+    func bind(reactor: LoginReactor) {
+        bindView(reactor)
+        bindAction(reactor)
+        bindState(reactor)
     }
     
-    func bindState(with viewModel: LoginVM) {
+    private func bindView(_ reactor: LoginReactor) {
+        loginButton.rx.tap
+            .subscribe(onNext: {
+                reactor.steps.accept(SampleStep.mainTabBarIsRequired)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindAction(_ reactor: LoginReactor) {
+        
+    }
+    
+    private func bindState(_ reactor: LoginReactor) {
         
     }
 }

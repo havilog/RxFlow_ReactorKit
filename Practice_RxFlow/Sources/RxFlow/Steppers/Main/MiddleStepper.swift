@@ -12,4 +12,8 @@ import RxRelay
 
 struct MiddleStepper: Stepper {
     let steps: PublishRelay<Step> = .init()
+    
+    var initialStep: Step {
+        return SampleStep.middleIsRequired
+    }
 }

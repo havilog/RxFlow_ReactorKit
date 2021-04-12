@@ -5,11 +5,13 @@
 //  Created by 한상진 on 2021/04/08.
 //
 
-protocol ServiceProviderType {
+protocol ServiceProviderType: class {
     var userService: UserServiceType { get set }
+    var loginService: LoginServiceType { get set }
     
 }
 
-struct ServiceProvider: ServiceProviderType {
-    var userService: UserServiceType = UserService()
+final class ServiceProvider: ServiceProviderType {
+    lazy var userService: UserServiceType = UserService(provider: self)
+    lazy var loginService: LoginServiceType = LoginService(provider: self)
 }

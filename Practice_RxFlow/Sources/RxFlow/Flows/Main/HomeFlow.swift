@@ -19,7 +19,7 @@ final class HomeFlow: Flow {
     
     private let rootViewController = UINavigationController()
     private let homeStepper: HomeStepper
-    private let services: ServiceProviderType
+    private let provider: ServiceProviderType
     
     // MARK: Init
     
@@ -27,7 +27,7 @@ final class HomeFlow: Flow {
         with services: ServiceProviderType,
         stepper: HomeStepper
     ) {
-        self.services = services
+        self.provider = services
         self.homeStepper = stepper
     }
     
@@ -57,8 +57,8 @@ final class HomeFlow: Flow {
 
 private extension HomeFlow {
     func coordinateToHome() -> FlowContributors {
-        let vm = MainVM(with: services)
-        let vc = MainVC(with: vm)
+        let vm = HomeReactor(with: provider)
+        let vc = HomeVC(with: vm)
         self.rootViewController.setViewControllers([vc], animated: false)
         return .one(flowContributor: .contribute(withNextPresentable: vc,
                                                  withNextStepper: vm))
@@ -66,8 +66,8 @@ private extension HomeFlow {
     
     func coordinateToHomeDetail(with ID: String) -> FlowContributors {
         // TODO: Fix
-        let vm = MainVM(with: services)
-        let vc = MainVC(with: vm)
+        let vm = HomeReactor(with: provider)
+        let vc = HomeVC(with: vm)
         self.rootViewController.setViewControllers([vc], animated: false)
         return .one(flowContributor: .contribute(withNextPresentable: vc,
                                                  withNextStepper: vm))
