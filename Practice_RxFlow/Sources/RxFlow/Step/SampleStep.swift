@@ -12,6 +12,16 @@ enum SampleStep: Step {
     case loginIsRequired
     case userIsLoggedIn
     
+    // Main
+    case mainTabBarIsRequired
+    
     // Home
-    case dashboardIsRequired
+    case homeIsRequired
+    case homeItemIsPicked(withID: String)
+    
+    // Middle
+    case middleIsRequired
+    
+    // Setting
+    case settingIsRequired
 }

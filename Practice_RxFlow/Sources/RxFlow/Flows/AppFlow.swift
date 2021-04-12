@@ -36,8 +36,11 @@ final class AppFlow: Flow {
         case .loginIsRequired:
             return coordinateToLoginVC()
             
-        case .userIsLoggedIn, .dashboardIsRequired:
+        case .userIsLoggedIn, .mainTabBarIsRequired:
             return coordinateToMainVC()
+            
+        default:
+            return .none
         }
     }
     
@@ -65,7 +68,7 @@ final class AppFlow: Flow {
             rootWindow.rootViewController = root
         }
         
-        let nextStep = OneStepper(withSingleStep: SampleStep.dashboardIsRequired)
+        let nextStep = OneStepper(withSingleStep: SampleStep.mainTabBarIsRequired)
         
         return .one(flowContributor: .contribute(withNextPresentable: homeFlow,
                                                  withNextStepper: nextStep))

@@ -43,7 +43,7 @@ class LoginVC: UIViewController {
     
     func bind(with viewModel: LoginVM) {
         loginButton.rx.tap.subscribe(onNext: {
-            viewModel.steps.accept(SampleStep.dashboardIsRequired)
+            viewModel.steps.accept(SampleStep.mainTabBarIsRequired)
         })
         .disposed(by: disposeBag)
         
