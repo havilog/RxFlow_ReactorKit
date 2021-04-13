@@ -50,6 +50,8 @@
 		40CB77BC262535CF0053F258 /* NetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CB77BB262535CF0053F258 /* NetworkTest.swift */; };
 		40CB77C626254CCF0053F258 /* HomeDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CB77C526254CCF0053F258 /* HomeDetailReactor.swift */; };
 		40CB77CF262569F60053F258 /* MiddleDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CB77CE262569F60053F258 /* MiddleDetailVC.swift */; };
+		40CB77D32625758C0053F258 /* NavigationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CB77D22625758C0053F258 /* NavigationTest.swift */; };
+		40CB77D926257C0C0053F258 /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CB77D826257C0C0053F258 /* FlowTest.swift */; };
 		D72A10519F0687C74DD10B30 /* Pods_Practice_RxFlowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A6CD86BC49D7F98BEA0651 /* Pods_Practice_RxFlowTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +112,8 @@
 		40CB77BB262535CF0053F258 /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
 		40CB77C526254CCF0053F258 /* HomeDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailReactor.swift; sourceTree = "<group>"; };
 		40CB77CE262569F60053F258 /* MiddleDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleDetailVC.swift; sourceTree = "<group>"; };
+		40CB77D22625758C0053F258 /* NavigationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTest.swift; sourceTree = "<group>"; };
+		40CB77D826257C0C0053F258 /* FlowTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTest.swift; sourceTree = "<group>"; };
 		85A6CD86BC49D7F98BEA0651 /* Pods_Practice_RxFlowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Practice_RxFlowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		890D35009A55671EDBEAA38E /* Pods-Practice_RxFlow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice_RxFlow.release.xcconfig"; path = "Target Support Files/Pods-Practice_RxFlow/Pods-Practice_RxFlow.release.xcconfig"; sourceTree = "<group>"; };
 		8A62E9418AA0467B63114C87 /* Pods_Practice_RxFlow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Practice_RxFlow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				40394B28262023270059DFB4 /* Practice_RxFlowTests.swift */,
+				40CB77D22625758C0053F258 /* NavigationTest.swift */,
+				40CB77D826257C0C0053F258 /* FlowTest.swift */,
 				40CB77BB262535CF0053F258 /* NetworkTest.swift */,
 				40394B20262022D50059DFB4 /* Info.plist */,
 			);
@@ -597,6 +603,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				40394B29262023270059DFB4 /* Practice_RxFlowTests.swift in Sources */,
+				40CB77D926257C0C0053F258 /* FlowTest.swift in Sources */,
+				40CB77D32625758C0053F258 /* NavigationTest.swift in Sources */,
 				40CB77BC262535CF0053F258 /* NetworkTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

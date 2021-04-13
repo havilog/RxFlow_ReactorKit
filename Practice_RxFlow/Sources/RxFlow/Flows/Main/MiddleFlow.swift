@@ -69,9 +69,8 @@ private extension MiddleFlow {
     }
     
     func coordinateToMiddleFirst() -> FlowContributors {
-        
         if let vc = self.rootViewController.viewControllers.first as? MiddleVC,
-           let reactor = vc.reactor{
+           let reactor = vc.reactor {
             return .one(flowContributor: .contribute(withNextPresentable: vc, 
                                                      withNextStepper: reactor))
         } else {

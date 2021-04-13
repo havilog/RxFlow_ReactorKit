@@ -62,16 +62,22 @@ extension HomeVC: View {
     }
     
     private func bindView(_ reactor: HomeReactor) {
-        tableView.rx.itemSelected
-            .withUnretained(self)
-            .map { owner, index -> String? in
-                return owner.fetchCellTitleText(index: index)
-            }
-            .compactMap { $0 }
+//        tableView.rx.itemSelected
+//            .withUnretained(self)
+//            .map { owner, index -> String? in
+//                return owner.fetchCellTitleText(index: index)
+//            }
+//            .compactMap { $0 }
+//            .map { Reactor.Action.itemSelected(title: $0) }
+//            .bind(to: reactor.action)
+//            .disposed(by: disposeBag)
+        
+        // modelSelected를 사용하면 더 쉽게 가져올 수 있네
+        tableView.rx.modelSelected(Movie.self)
+            .map { $0.description }
             .map { Reactor.Action.itemSelected(title: $0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-            
     }
     
     private func bindAction(_ reactor: HomeReactor) {

@@ -66,14 +66,6 @@ extension SettingVC: View {
     }
     
     private func bindView(_ reactor: SettingReactor) {
-//        logoutButton.rx.tap
-//            .subscribe(onNext: {
-//                reactor.steps.accept(SampleStep.loginIsRequired)
-//            })
-//            .disposed(by: disposeBag)
-    }
-    
-    private func bindAction(_ reactor: SettingReactor) {
         logoutButton.rx.tap
             .map { Reactor.Action.logoutButtonDidTap }
             .bind(to: reactor.action)
@@ -83,6 +75,10 @@ extension SettingVC: View {
             .map { Reactor.Action.alertButtonDidTap }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+    }
+    
+    private func bindAction(_ reactor: SettingReactor) {
+        
     }
     
     private func bindState(_ reactor: SettingReactor) {
