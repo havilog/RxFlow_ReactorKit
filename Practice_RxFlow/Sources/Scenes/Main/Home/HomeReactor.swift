@@ -42,7 +42,7 @@ final class HomeReactor: Reactor, Stepper {
     
     let errorSubject: PublishSubject<Error> = .init()
     
-    init(with provider: ServiceProviderType) {
+    init(provider: ServiceProviderType) {
         initialState = State()
         self.provider = provider
     }

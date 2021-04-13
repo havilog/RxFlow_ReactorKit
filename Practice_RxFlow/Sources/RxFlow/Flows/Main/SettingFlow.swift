@@ -18,7 +18,7 @@ final class SettingFlow: Flow {
     }
     
     private let rootViewController = UINavigationController()
-    private let stepper: SettingStepper
+    let stepper: SettingStepper
     private let provider: ServiceProviderType
     
     // MARK: Init
@@ -46,6 +46,9 @@ final class SettingFlow: Flow {
         
         case .loginIsRequired:
             return .end(forwardToParentFlowWithStep: SampleStep.loginIsRequired)
+            
+        case let .alert(message):
+            return navigateToAlertScreen(message: message)
         
         default:
             return .none
@@ -72,5 +75,12 @@ private extension SettingFlow {
         
         return .one(flowContributor: .contribute(withNextPresentable: vc,
                                                  withNextStepper: reactor))
+    }
+    
+    func navigateToAlertScreen(message: String) -> FlowContributors {
+        let alert = UIAlertController(title: "Demo", message: message, preferredStyle: .alert)
+        alert.addAction(.init(title: "Cancel", style: .cancel))
+        rootViewController.present(alert, animated: true)
+        return .none
     }
 }

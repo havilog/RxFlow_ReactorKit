@@ -62,11 +62,6 @@ extension LoginVC: View {
     }
     
     private func bindView(_ reactor: LoginReactor) {
-        loginButton.rx.tap
-            .subscribe(onNext: {
-                print($0)
-            })
-            .disposed(by: disposeBag)
     }
     
     private func bindAction(_ reactor: LoginReactor) {

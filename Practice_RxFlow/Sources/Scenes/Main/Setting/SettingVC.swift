@@ -26,6 +26,11 @@ final class SettingVC: UIViewController {
         $0.backgroundColor = .black
     }
     
+    private let alertButton: UIButton = UIButton().then {
+        $0.setTitle("showAlert", for: UIControl.State())
+        $0.backgroundColor = .black
+    }
+    
     // MARK: Initializers
     
     init(with reactor: SettingReactor) {
@@ -73,6 +78,11 @@ extension SettingVC: View {
             .map { Reactor.Action.logoutButtonDidTap }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        alertButton.rx.tap
+            .map { Reactor.Action.alertButtonDidTap }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     
     private func bindState(_ reactor: SettingReactor) {
@@ -86,16 +96,18 @@ private extension SettingVC {
         self.title = "Setting"
         view.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         
-        setNav()
-        
         view.addSubview(logoutButton)
         logoutButton.snp.makeConstraints { 
-            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(50)
+            $0.leading.trailing.equalToSuperview().inset(50)
+            $0.bottom.equalTo(view.safeArea.bottom).inset(50)
             $0.height.equalTo(50)
         }
-    }
-    
-    private func setNav() {
         
+        view.addSubview(alertButton)
+        alertButton.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(50)
+            $0.bottom.equalTo(logoutButton.snp.top).offset(-50)
+            $0.height.equalTo(50)
+        }
     }
 }

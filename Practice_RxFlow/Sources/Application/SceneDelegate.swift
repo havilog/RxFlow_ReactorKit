@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         coordinator.rx.willNavigate
             .subscribe(onNext: { flow, step in
                 let currentFlow = "\(flow)".split(separator: ".").last ?? "no flow"
-                print("➡️ will navigate to flow= \(currentFlow) and step= \(step)")
+                print("➡️ will navigate to flow = \(currentFlow) and step = \(step)")
             })
             .disposed(by: disposeBag)
         

@@ -18,7 +18,7 @@ final class HomeFlow: Flow {
     }
     
     private let rootViewController = UINavigationController()
-    private let homeStepper: HomeStepper
+    let stepper: HomeStepper
     private let provider: ServiceProviderType
     
     // MARK: Init
@@ -28,7 +28,7 @@ final class HomeFlow: Flow {
         stepper: HomeStepper
     ) {
         self.provider = services
-        self.homeStepper = stepper
+        self.stepper = stepper
     }
     
     deinit {
@@ -47,6 +47,12 @@ final class HomeFlow: Flow {
         case let .homeItemIsPicked(withID):
             return coordinateToHomeDetail(with: withID)
             
+        case .middleIsRequiredAgain:
+            return .one(flowContributor: .forwardToParentFlow(withStep: SampleStep.middleIsRequiredAgain))
+            
+            // end로 부르면 HomeFlow자체가 deinit되므로 .one으로 불러야하네
+//            return .end(forwardToParentFlowWithStep: SampleStep.middleIsRequired)
+        
         default:
             return .none
         }
@@ -57,16 +63,20 @@ final class HomeFlow: Flow {
 
 private extension HomeFlow {
     func coordinateToHome() -> FlowContributors {
-        let reactor = HomeReactor(with: provider)
+        let reactor = HomeReactor(provider: provider)
         let vc = HomeVC(with: reactor)
-        self.rootViewController.pushViewController(vc, animated: true)
+        
+        // push하면 안됨 (다른 Flow에서 왔을 경우)
+        self.rootViewController.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, 
                                                  withNextStepper: reactor))
     }
     
     func coordinateToHomeDetail(with ID: String) -> FlowContributors {
-        let vc = HomeDetailVC(with: ID)
+        let reactor = HomeDetailReactor(provider: provider)
+        let vc = HomeDetailVC(with: reactor, title: ID)
         self.rootViewController.pushViewController(vc, animated: true)
-        return .one(flowContributor: .contribute(withNext: vc))
+        return .one(flowContributor: .contribute(withNextPresentable: vc, 
+                                                 withNextStepper: reactor))
     }
 }

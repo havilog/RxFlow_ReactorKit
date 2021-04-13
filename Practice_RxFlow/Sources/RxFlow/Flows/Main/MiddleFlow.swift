@@ -18,7 +18,7 @@ final class MiddleFlow: Flow {
     }
     
     private let rootViewController = UINavigationController()
-    private let stepper: MiddleStepper
+    let stepper: MiddleStepper
     private let provider: ServiceProviderType
     
     // MARK: Init
@@ -43,6 +43,12 @@ final class MiddleFlow: Flow {
         switch step {
         case .middleIsRequired:
             return coordinateToMiddle()
+            
+        case .middleIsRequiredAgain:
+            return coordinateToMiddleFirst()
+        
+        case .middleDetailIsRequired:
+            return presentMiddleDetail()
         
         default:
             return .none
@@ -54,11 +60,28 @@ final class MiddleFlow: Flow {
 
 private extension MiddleFlow {
     
-    // TODO: Fix
     func coordinateToMiddle() -> FlowContributors {
-        let vm = MiddleReactor(provider: provider)
-        let vc = MiddleVC(with: vm)
+        let reactor = MiddleReactor(provider: provider)
+        let vc = MiddleVC(with: reactor)
         self.rootViewController.setViewControllers([vc], animated: true)
-        return .one(flowContributor: .contribute(withNext: vc))
+        return .one(flowContributor: .contribute(withNextPresentable: vc, 
+                                                 withNextStepper: reactor))
+    }
+    
+    func coordinateToMiddleFirst() -> FlowContributors {
+        
+        if let vc = self.rootViewController.viewControllers.first as? MiddleVC,
+           let reactor = vc.reactor{
+            return .one(flowContributor: .contribute(withNextPresentable: vc, 
+                                                     withNextStepper: reactor))
+        } else {
+            return coordinateToMiddle()
+        }
+    }
+    
+    func presentMiddleDetail() -> FlowContributors {
+        let vc = MiddleDetailVC()
+        self.rootViewController.visibleViewController?.present(vc, animated: true)
+        return .none
     }
 }

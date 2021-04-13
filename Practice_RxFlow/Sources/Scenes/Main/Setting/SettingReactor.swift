@@ -19,6 +19,7 @@ final class SettingReactor: Reactor, Stepper {
     
     enum Action {
         case logoutButtonDidTap
+        case alertButtonDidTap
     }
     
     enum Mutation {
@@ -49,6 +50,10 @@ extension SettingReactor {
             provider.loginService.setUserLogout()
             
             steps.accept(SampleStep.loginIsRequired)
+            return .empty()
+            
+        case .alertButtonDidTap:
+            steps.accept(SampleStep.alert(message: "From Setting"))
             return .empty()
         }
     }

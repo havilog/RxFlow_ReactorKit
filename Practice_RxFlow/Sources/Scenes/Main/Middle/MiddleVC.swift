@@ -11,9 +11,7 @@ import RxFlow
 import RxCocoa
 import ReactorKit
 
-final class MiddleVC: UIViewController, Stepper {
-    
-    var steps: PublishRelay<Step> = .init()
+final class MiddleVC: UIViewController {
     
     // MARK: Constants
     
@@ -22,6 +20,11 @@ final class MiddleVC: UIViewController, Stepper {
     var disposeBag: DisposeBag = DisposeBag()
     
     // MARK: UI Properties
+    
+    private let detailButton: UIButton = UIButton().then {
+        $0.setTitle("toMiddleDetail", for: .normal)
+        $0.backgroundColor = .black
+    }
     
     // MARK: Initializers
     
@@ -58,7 +61,10 @@ extension MiddleVC: View {
     }
     
     private func bindView(_ reactor: MiddleReactor) {
-        
+        detailButton.rx.tap
+            .map { Reactor.Action.detailButtonDidTap }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     
     private func bindAction(_ reactor: MiddleReactor) {
@@ -77,10 +83,11 @@ private extension MiddleVC {
         self.title = "Middle"
         view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         
-        setNav()
-    }
-    
-    private func setNav() {
-        
+        view.addSubview(detailButton)
+        detailButton.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(50)
+            $0.bottom.equalTo(view.safeArea.bottom).inset(50)
+            $0.height.equalTo(50)
+        }
     }
 }

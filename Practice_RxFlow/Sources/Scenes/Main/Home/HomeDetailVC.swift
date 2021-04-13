@@ -11,12 +11,12 @@ import RxFlow
 import RxCocoa
 import ReactorKit
 
-final class HomeDetailVC: UIViewController, Stepper {
+final class HomeDetailVC: UIViewController {
     
     // MARK: Property
     
-    var steps: PublishRelay<Step> = .init()
     private let movieTitle: String
+    internal var disposeBag: DisposeBag = .init()
     
     // MARK: UI Properties
     
@@ -25,12 +25,23 @@ final class HomeDetailVC: UIViewController, Stepper {
         $0.textAlignment = .center
     }
     
+    private let toMiddleButton: UIButton = UIButton(type: .system).then {
+        $0.setTitle("toMiddle", for: .normal)
+        $0.layer.borderColor = UIColor.yellow.cgColor
+        $0.layer.borderWidth = 1
+    }
+    
     // MARK: Initializers
     
-    init(with title: String) {
+    init(
+        with reactor: HomeDetailReactor,
+        title: String
+    ) {
         self.movieTitle = title
-        
+
         super.init(nibName: nil, bundle: nil)
+        
+        self.reactor = reactor
     }
     
     required init?(coder: NSCoder) {
@@ -52,16 +63,30 @@ private extension HomeDetailVC {
     private func setUI() {
         view.backgroundColor = .white
         
-        setNav()
-        
         view.addSubview(titleLabel)
         titleLabel.text = movieTitle
         titleLabel.snp.makeConstraints {
-            $0.edges.equalTo(view.safeArea.edges)
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(view.safeArea.top)
+            $0.bottom.equalTo(view.safeArea.bottom).offset(-50)
+        }
+        
+        view.addSubview(toMiddleButton)
+        toMiddleButton.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeArea.bottom)
+            $0.height.equalTo(50)
         }
     }
-    
-    private func setNav() {
-        
+}
+
+// MARK: Bind
+
+extension HomeDetailVC: View {
+    func bind(reactor: HomeDetailReactor) {
+        toMiddleButton.rx.tap
+            .map { Reactor.Action.toMiddleDidTap }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 }

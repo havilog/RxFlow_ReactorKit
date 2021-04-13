@@ -8,6 +8,9 @@
 import RxFlow
 
 enum SampleStep: Step {
+    // Global
+    case alert(message: String)
+    
     // Login
     case loginIsRequired
     case loginIsCompleted
@@ -21,6 +24,8 @@ enum SampleStep: Step {
     
     // Middle
     case middleIsRequired
+    case middleIsRequiredAgain
+    case middleDetailIsRequired
     
     // Setting
     case settingIsRequired

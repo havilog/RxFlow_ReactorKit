@@ -1,23 +1,25 @@
 //
-//  MiddleReactor.swift
+//  HomeDetailStepper.swift
 //  Practice_RxFlow
 //
-//  Created by 한상진 on 2021/04/12.
+//  Created by 한상진 on 2021/04/13.
 //
 
+import Foundation
 import RxFlow
 import RxCocoa
 import ReactorKit
 
-final class MiddleReactor: Reactor, Stepper {
+final class HomeDetailReactor: Reactor, Stepper {
     
     // MARK: Stepper
     
-    var steps: PublishRelay<Step> = .init() 
+    var steps: PublishRelay<Step> = .init()
     
     // MARK: Events
+    
     enum Action {
-        case detailButtonDidTap
+        case toMiddleDidTap
     }
     
     enum Mutation {
@@ -29,10 +31,12 @@ final class MiddleReactor: Reactor, Stepper {
     }
     
     // MARK: Properties
+    
     let initialState: State
     let provider: ServiceProviderType
     
     // MARK: Initializers
+    
     init(provider: ServiceProviderType) {
         initialState = State()
         self.provider = provider
@@ -40,29 +44,30 @@ final class MiddleReactor: Reactor, Stepper {
 }
 
 // MARK: Mutation
-extension MiddleReactor {
+
+extension HomeDetailReactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .detailButtonDidTap:
-            steps.accept(SampleStep.middleDetailIsRequired)
+        case .toMiddleDidTap:
+            steps.accept(SampleStep.middleIsRequiredAgain)
             return .empty()
         }
     }
 }
 
 // MARK: Reduce
-extension MiddleReactor {
-//    func reduce(state: State, mutation: Mutation) -> State {
-//        var newState = state
-        
-        //        switch mutation {
-        //        case :
-        //        }
-        
-//        return newState
-//    }
+
+extension HomeDetailReactor {
+    //    func reduce(state: State, mutation: Mutation) -> State {
+    //        var newState = state
+    //        switch mutation {
+    //        case :
+    //        }
+    //        return newState
+    //    }
 }
 
 // MARK: Method
-private extension MiddleReactor {
+
+private extension HomeDetailReactor {
 } 
