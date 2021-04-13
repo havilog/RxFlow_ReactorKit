@@ -7,6 +7,9 @@
    - 로그인 기능 구현, 로그인 되어있을 시 바로 MainTab으로 이동
    - 로그인이 안되어있거나, 로그아웃 했을 시 로그인 화면으로 이동
    - Main에서 셀 클릭시 Detail로 이동
+   - Detail에서 버튼 클릭 시 Middel Tap으로 이동
+   - Middel Tap에서 버튼 클릭시 DetailPresent
+   - Setting에서 버튼 클릭시 Alert띄워줌
 4. Test Code를 작성하여 화면 전환에 관련된 테스트를 한다.
 
 # 블로그
