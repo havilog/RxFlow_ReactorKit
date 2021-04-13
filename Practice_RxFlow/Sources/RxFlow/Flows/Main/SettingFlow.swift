@@ -57,20 +57,20 @@ final class SettingFlow: Flow {
 
 private extension SettingFlow {
     
-    // TODO: Fix
     func coordinateToSetting() -> FlowContributors {
         let reactor = SettingReactor(provider: provider)
         let vc = SettingVC(with: reactor)
         self.rootViewController.setViewControllers([vc], animated: true)
-        return .one(flowContributor: .contribute(withNext: vc))
+        return .one(flowContributor: .contribute(withNextPresentable: vc,
+                                                 withNextStepper: reactor))
     }
     
-    // TODO: 이렇게 하면 안됨
     func coordinateToLogin() -> FlowContributors {
         let reactor = LoginReactor(provider: provider)
         let vc = LoginVC(with: reactor)
         self.rootViewController.setViewControllers([vc], animated: true)
         
-        return .one(flowContributor: .contribute(withNext: vc))
+        return .one(flowContributor: .contribute(withNextPresentable: vc,
+                                                 withNextStepper: reactor))
     }
 }

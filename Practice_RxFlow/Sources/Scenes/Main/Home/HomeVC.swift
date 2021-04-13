@@ -11,8 +11,7 @@ import RxFlow
 import RxCocoa
 import ReactorKit
 
-final class HomeVC: UIViewController, Stepper {
-    var steps: PublishRelay<Step> = .init()
+final class HomeVC: UIViewController {
     
     var disposeBag: DisposeBag = .init()
     
@@ -63,7 +62,16 @@ extension HomeVC: View {
     }
     
     private func bindView(_ reactor: HomeReactor) {
-        
+        tableView.rx.itemSelected
+            .withUnretained(self)
+            .map { owner, index -> String? in
+                return owner.fetchCellTitleText(index: index)
+            }
+            .compactMap { $0 }
+            .map { Reactor.Action.itemSelected(title: $0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+            
     }
     
     private func bindAction(_ reactor: HomeReactor) {
@@ -71,26 +79,14 @@ extension HomeVC: View {
             .map { _ in Reactor.Action.loadData }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-        
-        tableView.rx.itemSelected
-            .withUnretained(self)
-            .map { owner, index -> String? in
-                guard let cell = owner.tableView.cellForRow(at: index) as? HomeCell else { return nil }
-                
-                return cell.titleLabel.text
-            }
-            .compactMap { $0 }
-            .map { Reactor.Action.itemSelected(title: $0) }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
     }
     
     private func bindState(_ reactor: HomeReactor) {
-        let stateDriver = reactor.state.asDriverOnErrorJustComplete()
+        let sharedState = reactor.state.share(replay: 1).subscribe(on: MainScheduler.instance)
         
-        stateDriver
+        sharedState
             .compactMap { $0.movies }
-            .drive(
+            .bind(to:
                 tableView.rx.items(
                     cellIdentifier: HomeCell.reusableID, 
                     cellType: HomeCell.self
@@ -100,9 +96,18 @@ extension HomeVC: View {
             }
             .disposed(by: disposeBag)
         
-        reactor.state
-            .compactMap { $0.step }
-            .bind(to: steps)
+        reactor.errorSubject
+            .asDriverOnErrorJustComplete()
+            .drive(onNext: {
+                // AlertController를 띄워줌
+                print("error ! : \($0)")
+            })
             .disposed(by: disposeBag)
+    }
+    
+    private func fetchCellTitleText(index: IndexPath) -> String? {
+        guard let cell = self.tableView.cellForRow(at: index) as? HomeCell else { return nil }
+        
+        return cell.titleLabel.text
     }
 }

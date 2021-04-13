@@ -11,7 +11,12 @@ import RxFlow
 import RxCocoa
 import ReactorKit
 
-final class HomeReactor: Reactor {
+final class HomeReactor: Reactor, Stepper {
+    
+    // MARK: Stepper
+    
+    var steps: PublishRelay<Step> = .init()
+    
     // MARK: Events
     
     enum Action {
@@ -23,26 +28,23 @@ final class HomeReactor: Reactor {
         case setMeta(_ meta: MetaData)
         case setMovies(_ movies: [Movie])
         case setError(error: Error)
-        
-        case coordinateToHomeDetailVC(title: String)
     }
     
     struct State {
         var meta: MetaData?
         var movies: [Movie]?
-        var errorResult: Error?
-        var step: Step?
     }
     
     // MARK: Properties
     
     let initialState: State
-    let provider: ServiceProviderType
+    private let provider: ServiceProviderType
+    
+    let errorSubject: PublishSubject<Error> = .init()
     
     init(with provider: ServiceProviderType) {
         initialState = State()
         self.provider = provider
-        
     }
 }
 
@@ -53,9 +55,11 @@ extension HomeReactor {
         switch action {
         case .loadData:
             return fetchMovieResult()
-            
+        
         case let .itemSelected(title):
-            return .just(.coordinateToHomeDetailVC(title: title))
+            steps.accept(SampleStep.homeItemIsPicked(withID: title))
+            
+            return .empty()
         }
     }
 }
@@ -64,9 +68,7 @@ extension HomeReactor {
 
 extension HomeReactor {
     func reduce(state: State, mutation: Mutation) -> State {
-        var newState = initialState
-        newState.meta = state.meta
-        newState.movies = state.movies
+        var newState = state
         
         switch mutation {
         case let .setMeta(meta):
@@ -76,10 +78,7 @@ extension HomeReactor {
             newState.movies = movies
             
         case let .setError(error):
-            newState.errorResult = error
-            
-        case let .coordinateToHomeDetailVC(title):
-            newState.step = SampleStep.homeItemIsPicked(withID: title)
+            errorSubject.onNext(error)
         }
         
         return newState

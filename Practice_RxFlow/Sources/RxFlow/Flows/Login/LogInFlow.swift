@@ -46,6 +46,7 @@ final class LoginFlow: Flow {
         let reactor = LoginReactor(provider: provider)
         let vc = LoginVC(with: reactor)
         self.rootViewController.pushViewController(vc, animated: true)
-        return .one(flowContributor: .contribute(withNext: vc))
+        return .one(flowContributor: .contribute(withNextPresentable: vc,
+                                                 withNextStepper: reactor))
     }
 }

@@ -7,11 +7,78 @@
 
 import Foundation
 
+enum JokesAPI {
+    case randomJokes
+    
+    static let baseURL = "https://api.icndb.com/"
+    var path: String { "jokes/random" }
+    var url: URL { URL(string: JokesAPI.baseURL + path)! }
+    
+    var sampleData: Data {
+        Data(
+            """
+            {
+                "type": "success",
+                    "value": {
+                    "id": 459,
+                    "joke": "Chuck Norris can solve the Towers of Hanoi in one move.",
+                    "categories": []
+                }
+            }
+            """.utf8
+        )
+    }
+}
+
+enum APIError: LocalizedError {
+    case unknownError
+    var errorDescription: String? { "unknownError" }
+}
+
+protocol URLSessionProtocol {
+    func dataTask(
+        with request: URLRequest,
+        completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
+    ) -> URLSessionDataTask
+}
+
+extension URLSession: URLSessionProtocol {}
+
 protocol NetworkManagerType {
     func fetchMovies() -> Result<ResultBase, Error>
 }
 
 final class NetworkManager: NetworkManagerType {
+    let session: URLSessionProtocol
+    
+    init(session: URLSessionProtocol = URLSession.shared) {
+        self.session = session
+    }
+    
+    // for test
+    func fetchRandomJoke(completion: @escaping (Result<Joke, Error>) -> Void) {
+        let request = URLRequest(url: JokesAPI.randomJokes.url)
+        
+        let task: URLSessionDataTask = session
+            .dataTask(with: request) { data, urlResponse, error in
+                guard let response = urlResponse as? HTTPURLResponse,
+                      (200...399).contains(response.statusCode) else {
+                    completion(.failure(error ?? APIError.unknownError))
+                    return
+                }
+                
+                if let data = data,
+                   let jokeResponse = try? JSONDecoder().decode(JokeReponse.self, from: data) {
+                    completion(.success(jokeResponse.value))
+                    return
+                }
+                completion(.failure(APIError.unknownError))
+            }
+        
+        task.resume()
+    }
+    
+    // for UI
     func fetchMovies() -> Result<ResultBase, Error> {
         let meta: MetaData = .init(isEnd: false, page: 10)
         

@@ -19,3 +19,15 @@ struct Movie {
     let name: String
     let description: String
 }
+
+// for Test
+struct JokeReponse: Decodable {
+    let type: String
+    let value: Joke
+}
+
+struct Joke: Decodable {
+    let id: Int
+    let joke: String
+    let categories: [String]
+}

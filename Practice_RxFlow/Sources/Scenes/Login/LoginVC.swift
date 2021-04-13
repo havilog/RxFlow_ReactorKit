@@ -11,11 +11,7 @@ import RxFlow
 import RxCocoa
 import ReactorKit
 
-final class LoginVC: UIViewController, Stepper {
-    
-    // MARK: Stepper
-    
-    var steps: PublishRelay<Step> = .init()
+final class LoginVC: UIViewController {
     
     var disposeBag: DisposeBag = .init()
     
@@ -66,11 +62,11 @@ extension LoginVC: View {
     }
     
     private func bindView(_ reactor: LoginReactor) {
-//        loginButton.rx.tap
-//            .subscribe(onNext: {
-//                reactor.steps.accept(SampleStep.mainTabBarIsRequired)
-//            })
-//            .disposed(by: disposeBag)
+        loginButton.rx.tap
+            .subscribe(onNext: {
+                print($0)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindAction(_ reactor: LoginReactor) {
@@ -81,9 +77,6 @@ extension LoginVC: View {
     }
     
     private func bindState(_ reactor: LoginReactor) {
-        reactor.state
-            .map { $0.step }
-            .bind(to: steps)
-            .disposed(by: disposeBag)
+
     }
 }

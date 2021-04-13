@@ -8,9 +8,14 @@
 import Foundation
 
 import RxFlow
+import RxCocoa
 import ReactorKit
 
-final class LoginReactor: Reactor {
+final class LoginReactor: Reactor, Stepper {
+    
+    // MARK: Stepper
+    
+    var steps: PublishRelay<Step> = .init()
     
     // MARK: Events
     
@@ -19,11 +24,9 @@ final class LoginReactor: Reactor {
     }
     
     enum Mutation {
-        case coordinateToMainTabBar
     }
     
     struct State {
-        var step: Step = SampleStep.loginIsRequired
     }
     
     // MARK: Properties
@@ -44,7 +47,9 @@ extension LoginReactor {
         switch action {
         case .loginButtonDidTap:
             provider.loginService.setUserLogin()
-            return .just(.coordinateToMainTabBar)
+            
+            steps.accept(SampleStep.loginIsCompleted)
+            return .empty()
         }
     }
 }
@@ -53,14 +58,12 @@ extension LoginReactor {
 
 extension LoginReactor {
     func reduce(state: State, mutation: Mutation) -> State {
-        var newState = state
-        
-        switch mutation {
-        case .coordinateToMainTabBar:
-            newState.step = SampleStep.loginIsCompleted
-        }
-        
-        return newState
+//        var newState = state
+//        
+//        switch mutation {
+//        }
+//        
+//        return newState
     }
 }
 

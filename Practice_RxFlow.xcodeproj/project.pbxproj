@@ -47,6 +47,7 @@
 		40649B072624185D0020AE0F /* Cell+ReusableID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40649B062624185D0020AE0F /* Cell+ReusableID.swift */; };
 		40CB77A6262419750053F258 /* UIView+safeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CB77A5262419750053F258 /* UIView+safeArea.swift */; };
 		40CB77AA26241CA90053F258 /* HomeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CB77A926241CA90053F258 /* HomeDetailVC.swift */; };
+		40CB77BC262535CF0053F258 /* NetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CB77BB262535CF0053F258 /* NetworkTest.swift */; };
 		D72A10519F0687C74DD10B30 /* Pods_Practice_RxFlowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A6CD86BC49D7F98BEA0651 /* Pods_Practice_RxFlowTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		40649B062624185D0020AE0F /* Cell+ReusableID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+ReusableID.swift"; sourceTree = "<group>"; };
 		40CB77A5262419750053F258 /* UIView+safeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+safeArea.swift"; sourceTree = "<group>"; };
 		40CB77A926241CA90053F258 /* HomeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailVC.swift; sourceTree = "<group>"; };
+		40CB77BB262535CF0053F258 /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
 		85A6CD86BC49D7F98BEA0651 /* Pods_Practice_RxFlowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Practice_RxFlowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		890D35009A55671EDBEAA38E /* Pods-Practice_RxFlow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice_RxFlow.release.xcconfig"; path = "Target Support Files/Pods-Practice_RxFlow/Pods-Practice_RxFlow.release.xcconfig"; sourceTree = "<group>"; };
 		8A62E9418AA0467B63114C87 /* Pods_Practice_RxFlow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Practice_RxFlow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				40394B28262023270059DFB4 /* Practice_RxFlowTests.swift */,
+				40CB77BB262535CF0053F258 /* NetworkTest.swift */,
 				40394B20262022D50059DFB4 /* Info.plist */,
 			);
 			path = Practice_RxFlowTests;
@@ -588,6 +591,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40394B29262023270059DFB4 /* Practice_RxFlowTests.swift in Sources */,
+				40CB77BC262535CF0053F258 /* NetworkTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

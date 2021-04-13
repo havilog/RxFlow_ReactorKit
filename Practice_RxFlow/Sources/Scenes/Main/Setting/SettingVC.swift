@@ -11,9 +11,7 @@ import RxFlow
 import RxCocoa
 import ReactorKit
 
-final class SettingVC: UIViewController, Stepper {
-    
-    var steps: PublishRelay<Step> = .init()
+final class SettingVC: UIViewController {
     
     // MARK: Constants
     
@@ -78,10 +76,6 @@ extension SettingVC: View {
     }
     
     private func bindState(_ reactor: SettingReactor) {
-        reactor.state
-            .compactMap { $0.step }
-            .bind(to: steps)
-            .disposed(by: disposeBag)
     }
 }
 
