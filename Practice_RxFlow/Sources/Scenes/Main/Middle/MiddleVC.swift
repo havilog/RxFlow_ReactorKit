@@ -26,6 +26,11 @@ final class MiddleVC: UIViewController {
         $0.backgroundColor = .black
     }
     
+    private let twoDepthFlow: UIButton = UIButton().then {
+        $0.setTitle("twoDepthFlow", for: UIControl.State())
+        $0.backgroundColor = .black
+    }
+    
     // MARK: Initializers
     
     init(with reactor: MiddleReactor) {
@@ -65,6 +70,11 @@ extension MiddleVC: View {
             .map { Reactor.Action.detailButtonDidTap }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        twoDepthFlow.rx.tap
+            .map { Reactor.Action.twoFlowButtonDidTap }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     
     private func bindAction(_ reactor: MiddleReactor) {
@@ -87,6 +97,13 @@ private extension MiddleVC {
         detailButton.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(50)
             $0.bottom.equalTo(view.safeArea.bottom).inset(50)
+            $0.height.equalTo(50)
+        }
+        
+        view.addSubview(twoDepthFlow)
+        twoDepthFlow.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(50)
+            $0.bottom.equalTo(detailButton.snp.top).offset(-50)
             $0.height.equalTo(50)
         }
     }

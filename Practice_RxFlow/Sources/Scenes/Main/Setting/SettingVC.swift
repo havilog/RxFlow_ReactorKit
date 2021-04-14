@@ -77,12 +77,9 @@ extension SettingVC: View {
             .disposed(by: disposeBag)
     }
     
-    private func bindAction(_ reactor: SettingReactor) {
-        
-    }
+    private func bindAction(_ reactor: SettingReactor) {}
     
-    private func bindState(_ reactor: SettingReactor) {
-    }
+    private func bindState(_ reactor: SettingReactor) {}
 }
 
 // MARK: UIs

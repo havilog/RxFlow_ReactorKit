@@ -29,4 +29,5 @@ enum SampleStep: Step {
     
     // Setting
     case settingIsRequired
+    case settingAndAlertIsRequired(message: String)
 }

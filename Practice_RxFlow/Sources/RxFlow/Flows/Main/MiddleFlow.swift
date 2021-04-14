@@ -49,6 +49,11 @@ final class MiddleFlow: Flow {
         
         case .middleDetailIsRequired:
             return presentMiddleDetail()
+            
+        case let .settingAndAlertIsRequired(msg):
+            let step = SampleStep.settingAndAlertIsRequired(message: msg)
+            let contributor: FlowContributor = .forwardToParentFlow(withStep: step) 
+            return .one(flowContributor: contributor)
         
         default:
             return .none
@@ -69,10 +74,9 @@ private extension MiddleFlow {
     }
     
     func coordinateToMiddleFirst() -> FlowContributors {
-        if let vc = self.rootViewController.viewControllers.first as? MiddleVC,
-           let reactor = vc.reactor {
-            return .one(flowContributor: .contribute(withNextPresentable: vc, 
-                                                     withNextStepper: reactor))
+        // coordinateToMiddle만 할 경우 vc를 새로 세팅해주기 때문에 기존에 있던 vc를 사용하고 싶어서
+        if (self.rootViewController.viewControllers.first as? MiddleVC) != nil {
+            return .none
         } else {
             return coordinateToMiddle()
         }

@@ -18,6 +18,7 @@ final class MiddleReactor: Reactor, Stepper {
     // MARK: Events
     enum Action {
         case detailButtonDidTap
+        case twoFlowButtonDidTap
     }
     
     enum Mutation {
@@ -45,6 +46,10 @@ extension MiddleReactor {
         switch action {
         case .detailButtonDidTap:
             steps.accept(SampleStep.middleDetailIsRequired)
+            return .empty()
+            
+        case .twoFlowButtonDidTap:
+            steps.accept(SampleStep.settingAndAlertIsRequired(message: "This is from middle twoFlowButton"))
             return .empty()
         }
     }

@@ -50,6 +50,9 @@ final class MainFlow: Flow {
             
         case .middleIsRequiredAgain:
             return coordinateToMiddle(step: step)
+            
+        case let .settingAndAlertIsRequired(msg):
+            return coordinateToSetting(with: msg)
         
         default:
             return .none
@@ -89,11 +92,21 @@ final class MainFlow: Flow {
     }
     
     private func coordinateToMiddle(step: Step) -> FlowContributors {
-        // selected index를 바꿔주고
-        // middle의 첫화면으로 가게 해야할 듯?
-        
         self.rootViewController.selectedIndex = TabIndex.middle.rawValue
         
-        return .one(flowContributor: .contribute(withNextPresentable: middleFlow, withNextStepper: OneStepper(withSingleStep: step)))
+        return .one(flowContributor:
+                        .contribute(
+                            withNextPresentable: middleFlow,
+                            withNextStepper: OneStepper(withSingleStep: SampleStep.middleIsRequiredAgain)
+                        )
+        )
+    }
+    
+    private func coordinateToSetting(with msg: String) -> FlowContributors {
+        self.rootViewController.selectedIndex = TabIndex.setting.rawValue
+        return .multiple(flowContributors: [
+            .contribute(withNextPresentable: settingFlow, withNextStepper: OneStepper(withSingleStep: SampleStep.settingIsRequired)),
+            .contribute(withNextPresentable: settingFlow, withNextStepper: OneStepper(withSingleStep: SampleStep.alert(message: msg)))
+        ])
     }
 }
