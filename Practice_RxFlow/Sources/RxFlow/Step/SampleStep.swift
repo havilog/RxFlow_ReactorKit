@@ -10,6 +10,7 @@ import RxFlow
 enum SampleStep: Step {
     // Global
     case alert(message: String)
+    case dismiss
     
     // Login
     case loginIsRequired

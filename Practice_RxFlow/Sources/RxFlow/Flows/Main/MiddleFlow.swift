@@ -54,6 +54,9 @@ final class MiddleFlow: Flow {
             let step = SampleStep.settingAndAlertIsRequired(message: msg)
             let contributor: FlowContributor = .forwardToParentFlow(withStep: step) 
             return .one(flowContributor: contributor)
+            
+        case .dismiss:
+            return dismissVC()
         
         default:
             return .none
@@ -83,8 +86,15 @@ private extension MiddleFlow {
     }
     
     func presentMiddleDetail() -> FlowContributors {
-        let vc = MiddleDetailVC()
+        let reactor = MiddleDetailReactor(provider: self.provider)
+        let vc = MiddleDetailVC(with: reactor)
         self.rootViewController.visibleViewController?.present(vc, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, 
+                                                 withNextStepper: reactor))
+    }
+    
+    func dismissVC() -> FlowContributors {
+        self.rootViewController.visibleViewController?.dismiss(animated: true)
         return .none
     }
 }

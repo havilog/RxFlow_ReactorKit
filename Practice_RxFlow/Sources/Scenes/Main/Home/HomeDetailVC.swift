@@ -27,8 +27,7 @@ final class HomeDetailVC: UIViewController {
     
     private let toMiddleButton: UIButton = UIButton(type: .system).then {
         $0.setTitle("toMiddle", for: .normal)
-        $0.layer.borderColor = UIColor.yellow.cgColor
-        $0.layer.borderWidth = 1
+        $0.backgroundColor = .black
     }
     
     // MARK: Initializers

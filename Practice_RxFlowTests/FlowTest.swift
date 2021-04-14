@@ -5,11 +5,12 @@
 //  Created by 한상진 on 2021/04/13.
 //
 
+@testable import Practice_RxFlow
 @testable import RxFlow
 import UIKit.UIViewController
 import XCTest
 
-fileprivate class MockFlow: Flow {
+private class MockFlow: Flow {
 
     var root: Presentable {
         return self.rootViewController
@@ -18,6 +19,27 @@ fileprivate class MockFlow: Flow {
     private let rootViewController = UIViewController()
 
     func navigate(to step: Step) -> FlowContributors {
+        return .none
+    }
+}
+
+private class MockHomeFlow: Flow {
+    var root: Presentable {
+        return self.rootViewController
+    }
+    
+    private let rootViewController = UINavigationController()
+    
+    func navigate(to step: Step) -> FlowContributors {
+        guard let step = step.asSampleStep else { return .none }
+        
+        switch step {
+        case .homeIsRequired:
+            <#code#>
+        default:
+            <#code#>
+        }
+        
         return .none
     }
 }
@@ -301,3 +323,4 @@ final class FlowsTests: XCTestCase {
         // Then: the block is executed
         XCTAssertTrue(isBlockCalled)
     }
+}
