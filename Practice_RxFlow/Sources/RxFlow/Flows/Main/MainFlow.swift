@@ -7,6 +7,7 @@
 
 import UIKit
 
+import RxSwift
 import RxFlow
 
 final class MainFlow: Flow {
@@ -84,7 +85,6 @@ final class MainFlow: Flow {
         }
         
         return .multiple(flowContributors: [
-            // CompositeStepper(steppers: [OneStepper(withSingleStep: DemoStep.moviesAreRequired), wishlistStepper]
             .contribute(withNextPresentable: homeFlow, withNextStepper: homeFlow.stepper), 
             .contribute(withNextPresentable: middleFlow, withNextStepper: middleFlow.stepper),
             .contribute(withNextPresentable: settingFlow, withNextStepper: settingFlow.stepper)
@@ -93,7 +93,6 @@ final class MainFlow: Flow {
     
     private func coordinateToMiddle(step: Step) -> FlowContributors {
         self.rootViewController.selectedIndex = TabIndex.middle.rawValue
-        
         return .one(flowContributor:
                         .contribute(
                             withNextPresentable: middleFlow,

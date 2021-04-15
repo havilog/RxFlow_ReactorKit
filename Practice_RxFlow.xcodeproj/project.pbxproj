@@ -29,7 +29,6 @@
 		404A6F2C261EDF4B000E7703 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F2B261EDF4B000E7703 /* LoginVC.swift */; };
 		404A6F30261EDF56000E7703 /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F2F261EDF56000E7703 /* LoginReactor.swift */; };
 		404A6F3B261EE022000E7703 /* HomeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F3A261EE022000E7703 /* HomeReactor.swift */; };
-		404A6F3F261EE0A3000E7703 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F3E261EE0A3000E7703 /* ViewModelType.swift */; };
 		404A6F42261EE340000E7703 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F41261EE340000E7703 /* MainFlow.swift */; };
 		404A6F47261EE679000E7703 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F46261EE679000E7703 /* AppStepper.swift */; };
 		40649A122623E1160020AE0F /* MiddleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40649A112623E1160020AE0F /* MiddleVC.swift */; };
@@ -94,7 +93,6 @@
 		404A6F2B261EDF4B000E7703 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		404A6F2F261EDF56000E7703 /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
 		404A6F3A261EE022000E7703 /* HomeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactor.swift; sourceTree = "<group>"; };
-		404A6F3E261EE0A3000E7703 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		404A6F41261EE340000E7703 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		404A6F46261EE679000E7703 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		40649A112623E1160020AE0F /* MiddleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleVC.swift; sourceTree = "<group>"; };
@@ -219,14 +217,40 @@
 		40394B1D262022D50059DFB4 /* Practice_RxFlowTests */ = {
 			isa = PBXGroup;
 			children = (
+				40CB77BB262535CF0053F258 /* NetworkTest.swift */,
 				40394B28262023270059DFB4 /* Practice_RxFlowTests.swift */,
 				40CB77D22625758C0053F258 /* NavigationTest.swift */,
 				40FB6B9E26269643001E1A5C /* TestUIViewController.swift */,
 				40CB77D826257C0C0053F258 /* FlowTest.swift */,
-				40CB77BB262535CF0053F258 /* NetworkTest.swift */,
 				40394B20262022D50059DFB4 /* Info.plist */,
 			);
 			path = Practice_RxFlowTests;
+			sourceTree = "<group>";
+		};
+		4045968E2628048E00F5531A /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				40CB77A5262419750053F258 /* UIView+safeArea.swift */,
+				40649B062624185D0020AE0F /* Cell+ReusableID.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		4045968F2628049400F5531A /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				40649AF52624175F0020AE0F /* Observable+Extensions.swift */,
+				40649AEF262412890020AE0F /* UIViewController+Rx.swift */,
+				40649ACD262401DE0020AE0F /* Step+asSampleStep.swift */,
+			);
+			path = Rx;
+			sourceTree = "<group>";
+		};
+		404596902628049A00F5531A /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		404A6E97261EC718000E7703 = {
@@ -350,8 +374,8 @@
 		404A6F3D261EE095000E7703 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				404A6F3E261EE0A3000E7703 /* ViewModelType.swift */,
 				40394B11262002FC0059DFB4 /* ActivityIndicator.swift */,
+				40649AD726240DE30020AE0F /* Model */,
 				40649ACC262401CF0020AE0F /* Extension */,
 			);
 			path = Common;
@@ -360,11 +384,9 @@
 		40649ACC262401CF0020AE0F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				40649ACD262401DE0020AE0F /* Step+asSampleStep.swift */,
-				40649AEF262412890020AE0F /* UIViewController+Rx.swift */,
-				40649AF52624175F0020AE0F /* Observable+Extensions.swift */,
-				40649B062624185D0020AE0F /* Cell+ReusableID.swift */,
-				40CB77A5262419750053F258 /* UIView+safeArea.swift */,
+				404596902628049A00F5531A /* Foundation */,
+				4045968F2628049400F5531A /* Rx */,
+				4045968E2628048E00F5531A /* UIKit */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -374,7 +396,6 @@
 			children = (
 				40649AE026240F130020AE0F /* NetworkManager.swift */,
 				40FB6BA226269B3C001E1A5C /* TestNetworkManager.swift */,
-				40649AD726240DE30020AE0F /* Model */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -649,7 +670,6 @@
 				40CB77A6262419750053F258 /* UIView+safeArea.swift in Sources */,
 				40FB6BA326269B3C001E1A5C /* TestNetworkManager.swift in Sources */,
 				40649AF0262412890020AE0F /* UIViewController+Rx.swift in Sources */,
-				404A6F3F261EE0A3000E7703 /* ViewModelType.swift in Sources */,
 				40649A262623E7D90020AE0F /* BaseService.swift in Sources */,
 				404A6F1C261EDBB5000E7703 /* AppFlow.swift in Sources */,
 				4006956A26204394001AB8D1 /* MiddleFlow.swift in Sources */,

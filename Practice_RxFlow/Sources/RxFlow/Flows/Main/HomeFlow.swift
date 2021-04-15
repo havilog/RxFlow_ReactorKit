@@ -49,9 +49,6 @@ final class HomeFlow: Flow {
             
         case .middleIsRequiredAgain:
             return .one(flowContributor: .forwardToParentFlow(withStep: SampleStep.middleIsRequiredAgain))
-            
-            // end로 부르면 HomeFlow자체가 deinit되므로 .one으로 불러야하네
-//            return .end(forwardToParentFlowWithStep: SampleStep.middleIsRequired)
         
         default:
             return .none
@@ -65,8 +62,6 @@ private extension HomeFlow {
     func coordinateToHome() -> FlowContributors {
         let reactor = HomeReactor(provider: provider)
         let vc = HomeVC(with: reactor)
-        
-        // push하면 안됨 (다른 Flow에서 왔을 경우)
         self.rootViewController.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, 
                                                  withNextStepper: reactor))

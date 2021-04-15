@@ -62,16 +62,13 @@ extension LoginVC: View {
     }
     
     private func bindView(_ reactor: LoginReactor) {
-    }
-    
-    private func bindAction(_ reactor: LoginReactor) {
         loginButton.rx.tap
             .map { Reactor.Action.loginButtonDidTap }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
     
-    private func bindState(_ reactor: LoginReactor) {
-
-    }
+    private func bindAction(_ reactor: LoginReactor) {}
+    
+    private func bindState(_ reactor: LoginReactor) {}
 }

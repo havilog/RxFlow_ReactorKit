@@ -22,13 +22,9 @@ final class HomeDetailReactor: Reactor, Stepper {
         case toMiddleDidTap
     }
     
-    enum Mutation {
-        
-    }
+    enum Mutation {}
     
-    struct State {
-        
-    }
+    struct State {}
     
     // MARK: Properties
     

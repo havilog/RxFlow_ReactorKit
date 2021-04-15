@@ -62,17 +62,6 @@ extension HomeVC: View {
     }
     
     private func bindView(_ reactor: HomeReactor) {
-//        tableView.rx.itemSelected
-//            .withUnretained(self)
-//            .map { owner, index -> String? in
-//                return owner.fetchCellTitleText(index: index)
-//            }
-//            .compactMap { $0 }
-//            .map { Reactor.Action.itemSelected(title: $0) }
-//            .bind(to: reactor.action)
-//            .disposed(by: disposeBag)
-        
-        // modelSelected를 사용하면 더 쉽게 가져올 수 있네
         tableView.rx.modelSelected(Movie.self)
             .map { $0.description }
             .map { Reactor.Action.itemSelected(title: $0) }
@@ -100,14 +89,6 @@ extension HomeVC: View {
             ) { index, item, cell in
                 cell.bind(with: item)
             }
-            .disposed(by: disposeBag)
-        
-        reactor.errorSubject
-            .asDriverOnErrorJustComplete()
-            .drive(onNext: {
-                // AlertController를 띄워줌
-                print("error ! : \($0)")
-            })
             .disposed(by: disposeBag)
     }
     

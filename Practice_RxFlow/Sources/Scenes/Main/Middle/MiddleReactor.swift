@@ -59,11 +59,11 @@ extension MiddleReactor {
 extension MiddleReactor {
 //    func reduce(state: State, mutation: Mutation) -> State {
 //        var newState = state
-        
-        //        switch mutation {
-        //        case :
-        //        }
-        
+//        
+//        switch mutation {
+//        case :
+//        }
+//        
 //        return newState
 //    }
 }

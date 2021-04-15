@@ -77,7 +77,6 @@ private extension MiddleFlow {
     }
     
     func coordinateToMiddleFirst() -> FlowContributors {
-        // coordinateToMiddle만 할 경우 vc를 새로 세팅해주기 때문에 기존에 있던 vc를 사용하고 싶어서
         if (self.rootViewController.viewControllers.first as? MiddleVC) != nil {
             return .none
         } else {

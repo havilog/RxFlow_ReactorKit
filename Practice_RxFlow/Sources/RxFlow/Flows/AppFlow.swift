@@ -42,10 +42,6 @@ final class AppFlow: Flow {
         case .loginIsRequired:
             return coordinateToLoginVC()
             
-        /// 아직 어떤 상황에서 필요한지 이해 x
-//        case .loginIsCompleted:
-//            return dismissLogin()
-            
         /// mainTabBarIsRequired 호출 시 MainFlow와 nextStep을 넘겨준다.
         case .mainTabBarIsRequired, .loginIsCompleted:
             return coordinateToMainVC()
@@ -56,14 +52,10 @@ final class AppFlow: Flow {
     }
     
     private func coordinateToLoginVC() -> FlowContributors {
-//        if let rootVC = rootWindow.rootViewController {
-//            rootVC.dismiss(animated: false)
-//        }
-        
         let loginFlow = LoginFlow(with: provider)
         
-        Flows.use(loginFlow, when: .ready) { [unowned self] root in
-            rootWindow.rootViewController = root
+        Flows.use(loginFlow, when: .created) { [unowned self] root in
+            self.rootWindow.rootViewController = root
         }
         
         let nextStep = OneStepper(withSingleStep: SampleStep.loginIsRequired)
@@ -75,7 +67,7 @@ final class AppFlow: Flow {
     private func coordinateToMainVC() -> FlowContributors {
         let mainFlow = MainFlow(with: provider)
         
-        Flows.use(mainFlow, when: .ready) { [unowned self] root in
+        Flows.use(mainFlow, when: .created) { [unowned self] root in
             rootWindow.rootViewController = root
         }
         
@@ -84,14 +76,4 @@ final class AppFlow: Flow {
         return .one(flowContributor: .contribute(withNextPresentable: mainFlow,
                                                  withNextStepper: nextStep))
     }
-    
-    private func dismissLogin() -> FlowContributors {
-        print("dismissLogin called")
-//        if let loginVC = rootWindow.rootViewController {
-//            loginVC.dismiss(animated: true)
-//        }
-        
-        return .none
-    }
-    
 }
