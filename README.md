@@ -1,5 +1,13 @@
 # RxFlow_ReactorKit
 
+# RxFlow와 도입을 결정하게 된 계기
+
+`RxFlow`란 Coordinator패턴을 Rx로 wrapping한 navigation framework이다.
+
+기존 ReactorKit같은 경우 화면 전환에 관련된 로직을 View 혹은 Reactor에서 처리하고 있기 때문에,
+
+화면 로직 분리에 대한 필요성을 느끼고 도입을 검토하게 되었다.
+
 # 목표
 
 1. `RxFlow`의 도입을 검토하기 위해 토이 프로젝트를 만들어 검증한다.
