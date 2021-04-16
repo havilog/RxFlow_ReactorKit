@@ -1,5 +1,7 @@
 # RxFlow_ReactorKit
 
+<center><img src="https://github.com/hansangjin96/RxFlow_ReactorKit/blob/main/%ED%99%94%EB%A9%B4-%EA%B8%B0%EB%A1%9D-2021-04-14-%EC%98%A4%ED%9B%84-12.47.58.gif" width="50%" height="50%"></center>
+
 # RxFlow와 도입을 결정하게 된 계기
 
 `RxFlow`란 Coordinator패턴을 Rx로 wrapping한 navigation framework이다.
@@ -36,6 +38,12 @@
 
 [RxFlow 톺아보기 1](https://velog.io/@hansangjin96/RxSwiftRxFlow-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0-1)
 
-# 구현
+### **Requirements**
 
-<center><img src="https://github.com/hansangjin96/RxFlow_ReactorKit/blob/main/%ED%99%94%EB%A9%B4-%EA%B8%B0%EB%A1%9D-2021-04-14-%EC%98%A4%ED%9B%84-12.47.58.gif" width="50%" height="50%"></center>
+- Xcode 12.x
+- Swift 5.x
+
+### **CocoaPods**
+
+- RxFlow
+- ReactorKit
