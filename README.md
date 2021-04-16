@@ -35,12 +35,16 @@
 
 [RxFlow 톺아보기 1](https://velog.io/@hansangjin96/RxSwiftRxFlow-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0-1)
 
-# **Requirements**
+# Requirements
 
 - Xcode 12.x
 - Swift 5.x
 
-# **CocoaPods**
+# CocoaPods
 
 - RxFlow
 - ReactorKit
+
+## License
+
+- MIT
