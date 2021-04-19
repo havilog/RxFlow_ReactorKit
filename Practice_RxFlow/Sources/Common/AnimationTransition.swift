@@ -75,44 +75,25 @@ final class AnimationTransition: UIPercentDrivenInteractiveTransition, UIViewCon
         
         let duration = transitionDuration(using: transitionContext)
         
-//        UIView.animateKeyframes(
-//            withDuration: duration,
-//            delay: 0, 
-//            options: .calculationModeCubic, 
-//            animations: {
-//                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3) { 
-////                    fromVC.view.layer.transform
-//                }
-//                
-//                UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1/3) { 
-////                    fromVC.view.layer.transform
-//                }
-//                
-//                UIView.addKeyframe(withRelativeStartTime: 2/3, relativeDuration: 1/3) { 
-////                    fromVC.view.layer.transform
-//                }
-//            },
-//            completion: { _ in
-//                toVC.view.isHidden = false
-//                snapshot.removeFromSuperview()
-//                fromVC.view.layer.transform = CATransform3DIdentity
-//                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-//            }
-//        )
         
-        UIView.animate(
+        // TODO: Animation 추가
+        
+        UIView.animateKeyframes(
             withDuration: duration,
-            delay: .zero,
-            usingSpringWithDamping: .zero, 
-            initialSpringVelocity: .zero,
-            options: .curveEaseOut,
+            delay: 0, 
+            options: .calculationModeCubic, 
             animations: {
-//                toVC.view.transform = .identity
-//                toVC.view.alpha = 1
-                snapshot.transform = .identity
-                snapshot.alpha = 1
-                snapshot.frame = finalFrame
-                snapshot.layer.cornerRadius = 0
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3) { 
+//                    fromVC.view.layer.transform
+                }
+                
+                UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1/3) { 
+//                    fromVC.view.layer.transform
+                }
+                
+                UIView.addKeyframe(withRelativeStartTime: 2/3, relativeDuration: 1/3) { 
+//                    fromVC.view.layer.transform
+                }
             },
             completion: { _ in
                 toVC.view.isHidden = false
