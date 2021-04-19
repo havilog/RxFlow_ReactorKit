@@ -8,14 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		36748FA98A8A1A9C7FBEECBF /* Pods_Practice_RxFlow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A62E9418AA0467B63114C87 /* Pods_Practice_RxFlow.framework */; };
-		4006955826204360001AB8D1 /* HomeStapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4006955726204360001AB8D1 /* HomeStapper.swift */; };
-		4006955C2620436C001AB8D1 /* SettingStapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4006955B2620436C001AB8D1 /* SettingStapper.swift */; };
-		400695602620437D001AB8D1 /* MiddleStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4006955F2620437D001AB8D1 /* MiddleStepper.swift */; };
 		400695662620438C001AB8D1 /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400695652620438C001AB8D1 /* HomeFlow.swift */; };
 		4006956A26204394001AB8D1 /* MiddleFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4006956926204394001AB8D1 /* MiddleFlow.swift */; };
 		4006956E2620439B001AB8D1 /* SettingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4006956D2620439B001AB8D1 /* SettingFlow.swift */; };
 		40394B12262002FC0059DFB4 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40394B11262002FC0059DFB4 /* ActivityIndicator.swift */; };
 		40394B29262023270059DFB4 /* Practice_RxFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40394B28262023270059DFB4 /* Practice_RxFlowTests.swift */; };
+		40438D3026293CF50029C66C /* AnimationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40438D2F26293CF50029C66C /* AnimationTransition.swift */; };
 		404A6EA4261EC718000E7703 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6EA3261EC718000E7703 /* AppDelegate.swift */; };
 		404A6EA6261EC718000E7703 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6EA5261EC718000E7703 /* SceneDelegate.swift */; };
 		404A6EA8261EC718000E7703 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6EA7261EC718000E7703 /* HomeVC.swift */; };
@@ -30,7 +28,6 @@
 		404A6F30261EDF56000E7703 /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F2F261EDF56000E7703 /* LoginReactor.swift */; };
 		404A6F3B261EE022000E7703 /* HomeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F3A261EE022000E7703 /* HomeReactor.swift */; };
 		404A6F42261EE340000E7703 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F41261EE340000E7703 /* MainFlow.swift */; };
-		404A6F47261EE679000E7703 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404A6F46261EE679000E7703 /* AppStepper.swift */; };
 		40649A122623E1160020AE0F /* MiddleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40649A112623E1160020AE0F /* MiddleVC.swift */; };
 		40649A162623E11E0020AE0F /* MiddleReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40649A152623E11E0020AE0F /* MiddleReactor.swift */; };
 		40649A1A2623E1E40020AE0F /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40649A192623E1E40020AE0F /* SettingVC.swift */; };
@@ -68,9 +65,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4006955726204360001AB8D1 /* HomeStapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStapper.swift; sourceTree = "<group>"; };
-		4006955B2620436C001AB8D1 /* SettingStapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStapper.swift; sourceTree = "<group>"; };
-		4006955F2620437D001AB8D1 /* MiddleStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleStepper.swift; sourceTree = "<group>"; };
 		400695652620438C001AB8D1 /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
 		4006956926204394001AB8D1 /* MiddleFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleFlow.swift; sourceTree = "<group>"; };
 		4006956D2620439B001AB8D1 /* SettingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFlow.swift; sourceTree = "<group>"; };
@@ -78,6 +72,7 @@
 		40394B1C262022D50059DFB4 /* Practice_RxFlowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Practice_RxFlowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		40394B20262022D50059DFB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40394B28262023270059DFB4 /* Practice_RxFlowTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Practice_RxFlowTests.swift; sourceTree = "<group>"; };
+		40438D2F26293CF50029C66C /* AnimationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTransition.swift; sourceTree = "<group>"; };
 		404A6EA0261EC718000E7703 /* Practice_RxFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practice_RxFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		404A6EA3261EC718000E7703 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		404A6EA5261EC718000E7703 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,7 +89,6 @@
 		404A6F2F261EDF56000E7703 /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
 		404A6F3A261EE022000E7703 /* HomeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactor.swift; sourceTree = "<group>"; };
 		404A6F41261EE340000E7703 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
-		404A6F46261EE679000E7703 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		40649A112623E1160020AE0F /* MiddleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleVC.swift; sourceTree = "<group>"; };
 		40649A152623E11E0020AE0F /* MiddleReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleReactor.swift; sourceTree = "<group>"; };
 		40649A192623E1E40020AE0F /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
@@ -174,15 +168,6 @@
 			path = Step;
 			sourceTree = "<group>";
 		};
-		400695532620433F001AB8D1 /* Steppers */ = {
-			isa = PBXGroup;
-			children = (
-				404A6F46261EE679000E7703 /* AppStepper.swift */,
-				40069572262043B9001AB8D1 /* Main */,
-			);
-			path = Steppers;
-			sourceTree = "<group>";
-		};
 		4006955426204346001AB8D1 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,16 +185,6 @@
 				400695652620438C001AB8D1 /* HomeFlow.swift */,
 				4006956926204394001AB8D1 /* MiddleFlow.swift */,
 				4006956D2620439B001AB8D1 /* SettingFlow.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		40069572262043B9001AB8D1 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				4006955726204360001AB8D1 /* HomeStapper.swift */,
-				4006955F2620437D001AB8D1 /* MiddleStepper.swift */,
-				4006955B2620436C001AB8D1 /* SettingStapper.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -283,14 +258,13 @@
 			path = Practice_RxFlow;
 			sourceTree = "<group>";
 		};
-		404A6F16261ED96C000E7703 /* RxFlow */ = {
+		404A6F16261ED96C000E7703 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
 				4006955226204337001AB8D1 /* Step */,
 				4006955426204346001AB8D1 /* Flows */,
-				400695532620433F001AB8D1 /* Steppers */,
 			);
-			path = RxFlow;
+			path = Flows;
 			sourceTree = "<group>";
 		};
 		404A6F21261EDD7C000E7703 /* Services */ = {
@@ -347,7 +321,7 @@
 				404A6F3D261EE095000E7703 /* Common */,
 				404A6F21261EDD7C000E7703 /* Services */,
 				40649AD626240DD90020AE0F /* Network */,
-				404A6F16261ED96C000E7703 /* RxFlow */,
+				404A6F16261ED96C000E7703 /* Flows */,
 				404A6F38261EDFE6000E7703 /* Scenes */,
 			);
 			path = Sources;
@@ -375,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				40394B11262002FC0059DFB4 /* ActivityIndicator.swift */,
+				40438D2F26293CF50029C66C /* AnimationTransition.swift */,
 				40649AD726240DE30020AE0F /* Model */,
 				40649ACC262401CF0020AE0F /* Extension */,
 			);
@@ -647,13 +622,13 @@
 				40CB77CF262569F60053F258 /* MiddleDetailVC.swift in Sources */,
 				404A6EA8261EC718000E7703 /* HomeVC.swift in Sources */,
 				40649A222623E7250020AE0F /* LoginService.swift in Sources */,
+				40438D3026293CF50029C66C /* AnimationTransition.swift in Sources */,
 				40649A1A2623E1E40020AE0F /* SettingVC.swift in Sources */,
 				40FB6B9B26268769001E1A5C /* MiddleDetailReactor.swift in Sources */,
 				40394B12262002FC0059DFB4 /* ActivityIndicator.swift in Sources */,
 				404A6F18261ED9E0000E7703 /* SampleStep.swift in Sources */,
 				404A6F23261EDD8B000E7703 /* ServiceProvider.swift in Sources */,
 				40CB77AA26241CA90053F258 /* HomeDetailVC.swift in Sources */,
-				4006955826204360001AB8D1 /* HomeStapper.swift in Sources */,
 				404A6EA4261EC718000E7703 /* AppDelegate.swift in Sources */,
 				40649AE126240F130020AE0F /* NetworkManager.swift in Sources */,
 				40649A1E2623E1EF0020AE0F /* SettingReactor.swift in Sources */,
@@ -666,7 +641,6 @@
 				404A6F2C261EDF4B000E7703 /* LoginVC.swift in Sources */,
 				404A6F3B261EE022000E7703 /* HomeReactor.swift in Sources */,
 				40649A122623E1160020AE0F /* MiddleVC.swift in Sources */,
-				4006955C2620436C001AB8D1 /* SettingStapper.swift in Sources */,
 				40CB77A6262419750053F258 /* UIView+safeArea.swift in Sources */,
 				40FB6BA326269B3C001E1A5C /* TestNetworkManager.swift in Sources */,
 				40649AF0262412890020AE0F /* UIViewController+Rx.swift in Sources */,
@@ -675,9 +649,7 @@
 				4006956A26204394001AB8D1 /* MiddleFlow.swift in Sources */,
 				404A6F42261EE340000E7703 /* MainFlow.swift in Sources */,
 				40649AFF262417F10020AE0F /* HomeCell.swift in Sources */,
-				400695602620437D001AB8D1 /* MiddleStepper.swift in Sources */,
 				40649A162623E11E0020AE0F /* MiddleReactor.swift in Sources */,
-				404A6F47261EE679000E7703 /* AppStepper.swift in Sources */,
 				40649B072624185D0020AE0F /* Cell+ReusableID.swift in Sources */,
 				4006956E2620439B001AB8D1 /* SettingFlow.swift in Sources */,
 				404A6EA6261EC718000E7703 /* SceneDelegate.swift in Sources */,

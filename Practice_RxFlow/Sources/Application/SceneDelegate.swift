@@ -13,8 +13,8 @@ import RxSwift
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var coordinator: FlowCoordinator = .init()
-    var disposeBag: DisposeBag = .init()
+    private let coordinator: FlowCoordinator = .init()
+    private let disposeBag: DisposeBag = .init()
 
     func scene(
         _ scene: UIScene,
@@ -23,14 +23,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        // didNavigate
-        coordinator.rx.willNavigate
-            .subscribe(onNext: { flow, step in
-                let currentFlow = "\(flow)".split(separator: ".").last ?? "no flow"
-                print("➡️ will navigate to flow = \(currentFlow) and step = \(step)")
-            })
-            .disposed(by: disposeBag)
+        coordinatorLogStart()
         
+        // App Initialize
+        
+        coordinateToAppFlow(with: windowScene)
+    }
+    
+    private func coordinateToAppFlow(with windowScene: UIWindowScene) {
         let window = UIWindow(windowScene: windowScene) 
         self.window = window
         
@@ -42,11 +42,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window.makeKeyAndVisible()
     }
-
-    func sceneDidDisconnect(_ scene: UIScene) {}
-    func sceneDidBecomeActive(_ scene: UIScene) {}
-    func sceneWillResignActive(_ scene: UIScene) {}
-    func sceneWillEnterForeground(_ scene: UIScene) {}
-    func sceneDidEnterBackground(_ scene: UIScene) {}
+    
+    private func coordinatorLogStart() {
+        coordinator.rx.willNavigate
+            .subscribe(onNext: { flow, step in
+                let currentFlow = "\(flow)".split(separator: ".").last ?? "no flow"
+                print("➡️ will navigate to flow = \(currentFlow) and step = \(step)")
+            })
+            .disposed(by: disposeBag)
+        
+        // didNavigate
+    }
 }
 

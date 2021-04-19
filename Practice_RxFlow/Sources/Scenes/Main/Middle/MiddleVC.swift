@@ -31,6 +31,11 @@ final class MiddleVC: UIViewController {
         $0.backgroundColor = .black
     }
     
+    private let transitionButton: UIButton = UIButton().then {
+        $0.setTitle("transitionButton", for: UIControl.State())
+        $0.backgroundColor = .black
+    }
+    
     // MARK: Initializers
     
     init(with reactor: MiddleReactor) {
@@ -104,6 +109,13 @@ private extension MiddleVC {
         twoDepthFlow.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(50)
             $0.bottom.equalTo(detailButton.snp.top).offset(-50)
+            $0.height.equalTo(50)
+        }
+        
+        view.addSubview(transitionButton)
+        transitionButton.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(50)
+            $0.bottom.equalTo(twoDepthFlow.snp.top).offset(-50)
             $0.height.equalTo(50)
         }
     }

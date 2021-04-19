@@ -8,6 +8,15 @@
 import UIKit
 
 import RxFlow
+import RxRelay
+
+struct MiddleStepper: Stepper {
+    let steps: PublishRelay<Step> = .init()
+    
+    var initialStep: Step {
+        return SampleStep.middleIsRequired
+    }
+}
 
 final class MiddleFlow: Flow {
     

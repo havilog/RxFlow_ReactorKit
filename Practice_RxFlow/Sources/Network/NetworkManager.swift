@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol NetworkManagerType {
+protocol NetworkManagerType: class {
     func fetchMovies() -> Result<ResultBase, Error>
 }
 

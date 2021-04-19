@@ -8,6 +8,7 @@
 import UIKit
 
 import RxFlow
+import RxRelay
 
 final class SettingFlow: Flow {
     
@@ -82,5 +83,13 @@ private extension SettingFlow {
         alert.addAction(.init(title: "Cancel", style: .cancel))
         rootViewController.present(alert, animated: true)
         return .none
+    }
+}
+
+struct SettingStepper: Stepper {
+    let steps: PublishRelay<Step> = .init()
+    
+    var initialStep: Step {
+        return SampleStep.settingIsRequired
     }
 }

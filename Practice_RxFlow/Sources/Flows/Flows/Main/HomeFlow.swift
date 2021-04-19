@@ -8,6 +8,16 @@
 import UIKit
 
 import RxFlow
+import RxRelay
+
+struct HomeStepper: Stepper {
+    let steps: PublishRelay<Step> = .init()
+    
+    /// do something before home is being presented
+    var initialStep: Step {
+        return SampleStep.homeIsRequired
+    }
+}
 
 final class HomeFlow: Flow {
     
@@ -17,9 +27,9 @@ final class HomeFlow: Flow {
         return self.rootViewController
     }
     
-    private let rootViewController = UINavigationController()
     let stepper: HomeStepper
     private let provider: ServiceProviderType
+    private let rootViewController = UINavigationController()
     
     // MARK: Init
     
